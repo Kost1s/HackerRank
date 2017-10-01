@@ -1,0 +1,53 @@
+### Intellij ###
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
+*.iml
+/.idea/
+classpath.txt
+
+## File-based project format:
+*.ipr
+*.iws
+
+### R Stuff ###
+analysis/.Rproj.user
+analysis/.RData
+analysis/.Rhistory
+analysis/r.Rproj
+
+### Excel ###
+~*.xlsx
+
+### Miscellaneous stuff ###
+/projects/*/target
+/target/
+/projects/target/
+
+### OSX Stuff ###
+*DS_Store
+
+### Lcal Data ###
+/data-verify/
+/data/local
+/data/local-dump.sql
+
+### Maven Cruft ###
+dependency-reduced-pom.xml
+*.releaseBackup
+
+### Windows Stuff ###
+/tomcat_debug_script.bat
+/tomcat_deployment_script.bat
+
+### Sensitive Stuff ###
+/data/roles/password.sql
+/exb-conf.json
+/cb-config.json
+/app.properties
+/app2.properties
+/import.properties
+/cme-conf.json
+/abn-conf.json
+/sys-conf.json
+/rbt-conf.json
+
+/cb-conf.json
