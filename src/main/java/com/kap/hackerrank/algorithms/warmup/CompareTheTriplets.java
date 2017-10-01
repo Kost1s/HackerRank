@@ -1,4 +1,4 @@
-package com.kap.hackerrank.algorithms;
+package com.kap.hackerrank.algorithms.warmup;
 
 import java.math.BigInteger;
 import java.util.*;
