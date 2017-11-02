@@ -1,11 +1,10 @@
 package com.kap.hackerrank.algorithms.sorting;
 
-import javax.swing.text.Style;
-import javax.xml.transform.stream.StreamSource;
+import com.kap.hackerrank.datastructures.Array;
+
 import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.IntStream;
 
 public class BigSorting {
 
@@ -14,19 +13,30 @@ public class BigSorting {
         int n = in.nextInt();
 
         String[] unsorted = new String[n];
-        //BigInteger[] unsorted = new BigInteger[n];
 
         for (int i = 0; i < n; i++) {
             unsorted[i] = in.next();
         }
 
-        //Arrays.stream(unsorted).sorted(Comparator.comparing()).forEach(System.out.println());
+        Comparator<String> numericStringComparator = (String a, String b) -> {
+            int compareLength = a.length() - b.length();
+            if(compareLength == 0) {
+                BigInteger bia = new BigInteger(a);
+                BigInteger bib = new BigInteger(b);
+                return bia.compareTo(bib);
+            }
+            return compareLength;
+        };
 
-        /*Arrays.sort(unsorted);
+        Arrays.sort(unsorted, numericStringComparator);
         for (int i = 0; i < n; i++) {
             System.out.println(unsorted[i]);
-        }*/
+        }
 
     }
+
+
+
+
 
 }
