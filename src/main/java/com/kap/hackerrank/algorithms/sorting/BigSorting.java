@@ -25,15 +25,7 @@ public class BigSorting {
             return compareLength;
         };
 
-        Arrays.sort(unsorted, numericStringComparator);
-        for (int i = 0; i < n; i++) {
-            System.out.println(unsorted[i]);
-        }
-
+        Arrays.stream(unsorted).sorted(numericStringComparator).forEach(System.out::println);
     }
-
-
-
-
 
 }
