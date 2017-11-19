@@ -14,7 +14,7 @@ public class InsertionSortPartOne {
         insertIntoSorted(ar);
     }
 
-    public static void insertIntoSorted(int[] ar) {
+    private static void insertIntoSorted(int[] ar) {
         int temp = ar[ar.length - 1];
         for(int i = ar.length - 1; i > 0; i--) {
             if (temp < ar[i-1]) {
