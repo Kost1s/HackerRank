@@ -17,7 +17,7 @@ public class InsertionSortPartTwo {
     public static void insertionSortPart2(int[] ar) {
         int temp;
         int i;
-        for (int j = 1; j <= (ar.length - 1); j++) {
+        for (int j = 1; j < ar.length; j++) {
             temp = ar[j];
             for (i = j; (i > 0) && (temp < ar[i - 1]); i--) {
                 ar[i] = ar[i - 1];

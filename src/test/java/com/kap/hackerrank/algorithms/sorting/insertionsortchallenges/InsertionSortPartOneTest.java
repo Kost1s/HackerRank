@@ -29,4 +29,18 @@ public class InsertionSortPartOneTest {
         assertTrue(isSorted(ar));
     }
 
+    @Test
+    public void arrayIsSortedElementOneBeforeTheEndDirectMethod() throws Exception {
+        int[] ar = {2, 4, 6, 8, 3};
+        InsertionSortPartOne.insertIntoSortedDirect(ar);
+        assertTrue(isSorted(ar));
+    }
+
+    @Test
+    public void arrayIsSortedElementExactlyTheEndDirectMethod() throws Exception {
+        int[] ar = {2, 4, 6, 8, 1};
+        InsertionSortPartOne.insertIntoSortedDirect(ar);
+        assertTrue(isSorted(ar));
+    }
+
 }
