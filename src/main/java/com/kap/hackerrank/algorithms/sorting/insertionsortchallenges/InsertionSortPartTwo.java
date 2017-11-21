@@ -14,21 +14,15 @@ public class InsertionSortPartTwo {
         insertionSortPart2(ar);
     }
 
-    private static void insertionSortPart2(int[] ar) {
+    public static void insertionSortPart2(int[] ar) {
+        int temp;
+        int i;
         for (int j = 1; j <= (ar.length - 1); j++) {
-            int temp = ar[j];
-            for (int i = j; i > 0; i--) {
-                if (temp < ar[i - 1]) {
-                    ar[i] = ar[i - 1];
-                } else {
-                    ar[i] = temp;
-                    break;
-                }
+            temp = ar[j];
+            for (i = j; (i > 0) && (temp < ar[i - 1]); i--) {
+                ar[i] = ar[i - 1];
             }
-
-            if (temp < ar[0]) {
-                ar[0] = temp;
-            }
+            ar[i] = temp;
             printArray(ar);
         }
     }
