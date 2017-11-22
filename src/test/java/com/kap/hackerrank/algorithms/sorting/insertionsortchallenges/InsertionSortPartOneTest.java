@@ -2,18 +2,10 @@ package com.kap.hackerrank.algorithms.sorting.insertionsortchallenges;
 
 import org.junit.Test;
 
+import static org.apache.commons.lang3.ArrayUtils.isSorted;
 import static org.junit.Assert.assertTrue;
 
 public class InsertionSortPartOneTest {
-
-    private boolean isSorted(int[] ar) {
-        for(int i=1; i < ar.length; i++) {
-            if(ar[i-1] > ar[i]) {
-                return false;
-            }
-        }
-        return true;
-    }
 
     @Test
     public void arrayIsSortedElementOneBeforeTheEnd() throws Exception {
