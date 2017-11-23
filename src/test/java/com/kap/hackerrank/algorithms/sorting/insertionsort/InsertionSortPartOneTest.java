@@ -1,4 +1,4 @@
-package com.kap.hackerrank.algorithms.sorting.insertionsortchallenges;
+package com.kap.hackerrank.algorithms.sorting.insertionsort;
 
 import org.junit.Test;
 
