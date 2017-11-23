@@ -1,5 +1,6 @@
-package com.kap.hackerrank.algorithms.sorting.insertionsortchallenges;
+package com.kap.hackerrank.algorithms;
 
+import com.kap.hackerrank.algorithms.sorting.CorrectnessAndLoopInvariant;
 import org.junit.Test;
 
 import static org.apache.commons.lang3.ArrayUtils.isSorted;

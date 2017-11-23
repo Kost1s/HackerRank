@@ -35,4 +35,11 @@ public class InsertionSortPartTwoTest {
         assertTrue(isSorted(ar));
     }
 
+    @Test
+    public void arrayIsSortedSameElements() throws Exception {
+        int[] ar = {2, 1, 3, 1, 2};
+        InsertionSortPartTwo.insertionSortPart2(ar);
+        assertTrue(isSorted(ar));
+    }
+
 }
