@@ -1,6 +1,6 @@
 package com.kap.hackerrank.algorithms.sorting;
 
-import java.util.Scanner;
+import static com.kap.hackerrank.Utils.readSizeAndElementsOfIntArray;
 
 /**
  * @author Konstantinos Antoniou
@@ -8,12 +8,7 @@ import java.util.Scanner;
 public class AlgorithmRunningTime {
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int s = in.nextInt();
-        int[] ar = new int[s];
-        for (int i = 0; i < s; i++) {
-            ar[i] = in.nextInt();
-        }
+        int[] ar = readSizeAndElementsOfIntArray();
         int shifts = insertionSortPart2(ar);
         System.out.println(shifts);
     }

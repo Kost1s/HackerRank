@@ -3,17 +3,12 @@ package com.kap.hackerrank.algorithms.sorting;
 import java.math.BigInteger;
 import java.util.*;
 
+import static com.kap.hackerrank.Utils.readSizeAndElementsOfStringArray;
+
 public class BigSorting {
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-
-        String[] unsorted = new String[n];
-
-        for (int i = 0; i < n; i++) {
-            unsorted[i] = in.next();
-        }
+        String[] unsorted = readSizeAndElementsOfStringArray();
 
         Comparator<String> numericStringComparator = (String a, String b) -> {
             int compareLength = a.length() - b.length();

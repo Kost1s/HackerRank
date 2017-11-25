@@ -2,18 +2,15 @@ package com.kap.hackerrank.algorithms.sorting;
 
 import java.util.Scanner;
 
+import static com.kap.hackerrank.Utils.readSizeAndElementsOfIntArray;
+
 /**
  * @author Konstantinos Antoniou
  */
 public class CorrectnessAndLoopInvariant {
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        int[] ar = new int[n];
-        for(int i=0;i<n;i++){
-            ar[i]=in.nextInt();
-        }
+        int[] ar = readSizeAndElementsOfIntArray();
         insertionSort(ar);
     }
 
