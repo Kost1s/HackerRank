@@ -20,4 +20,11 @@ public class InsertionSortAdvancedAnalysisTest {
         assertTrue(shifts == 4);
     }
 
+    @Test
+    public void printShiftsOfInsertionSortXShifts() throws Exception {
+        int[] ar = {6, 3, 2, 5, 7, 4, 8, 1};
+        int shifts = InsertionSortAdvancedAnalysis.insertionSortPartTwoDirectShifts(ar);
+        assertTrue(shifts == 14);
+    }
+
 }

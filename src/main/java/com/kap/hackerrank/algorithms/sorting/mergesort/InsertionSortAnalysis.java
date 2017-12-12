@@ -1,15 +1,17 @@
 package com.kap.hackerrank.algorithms.sorting.mergesort;
 
-public class MergeSortPrinceton {
+public class InsertionSortAnalysis {
+
+    private static int inversions;
 
     public static void main(String[] args) {
         Comparable[] a = {6, 3, 2, 5, 7, 4, 8, 1};
         sort(a);
-        show(a);
+        System.out.println(inversions);
     }
 
     // stably merge a[lo .. mid] with a[mid+1 ..hi] using aux[lo .. hi]
-    private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
+    private static int merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
         // precondition: a[lo .. mid] and a[mid+1 .. hi] are sorted subarrays
         assert isSorted(a, lo, mid);
         assert isSorted(a, mid+1, hi);
@@ -19,23 +21,34 @@ public class MergeSortPrinceton {
             aux[k] = a[k];
         }
 
+        int s = 0;
+        int inv = 0;
         // merge back to a[]
         int i = lo;
         int j = mid+1;
         for (int k = lo; k <= hi; k++) {
-            if      (i > mid)              a[k] = aux[j++];
-            else if (j > hi)               a[k] = aux[i++];
-            else if (less(aux[j], aux[i])) a[k] = aux[j++];
-            else                           a[k] = aux[i++];
+            if      (i > mid) {
+                a[k] = aux[j++];
+                s++;
+            } else if (j > hi) {
+                a[k] = aux[i++];
+                inv += s;
+            }  else if (less(aux[j], aux[i])) {
+                a[k] = aux[j++];
+                s++;
+            } else {
+                a[k] = aux[i++];
+                inv += s;
+            }
         }
 
         // postcondition: a[lo .. hi] is sorted
         assert isSorted(a, lo, hi);
+        return inv;
     }
 
     // mergesort a[lo..hi] using auxiliary array aux[lo..hi]
     private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
-        System.out.println("inside sort condition check:" + " lo: " + lo + " hi: " + hi);
         if (hi <= lo) {
             return;
         }
@@ -43,7 +56,7 @@ public class MergeSortPrinceton {
 
         sort(a, aux, lo, mid);
         sort(a, aux, mid + 1, hi);
-        merge(a, aux, lo, mid, hi);
+        inversions += merge(a, aux, lo, mid, hi);
     }
 
     /**
@@ -81,8 +94,5 @@ public class MergeSortPrinceton {
             System.out.println(a[i]);
         }
     }
-
-
-
 
 }
