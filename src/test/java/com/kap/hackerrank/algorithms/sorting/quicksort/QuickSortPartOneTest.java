@@ -5,7 +5,7 @@ import org.junit.Test;
 public class QuickSortPartOneTest {
 
     @Test
-    public void arrayIsSortedQuickSortPartOne() throws Exception {
+    public void arrayIsSorted() {
         int[] ar = {4, 5, 3, 7, 2};
         QuicksortPartOne.quickSortPartOne(ar);
     }

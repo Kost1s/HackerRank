@@ -2,10 +2,9 @@ package com.kap.hackerrank.algorithms.sorting.quicksort;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
-import static com.kap.hackerrank.Utils.readSizeAndElementsOfIntArray;
+import static com.kap.hackerrank.IOUtils.readSizeAndElementsOfIntArray;
 
 public class QuicksortPartOne {
 
@@ -21,7 +20,7 @@ public class QuicksortPartOne {
 
         int pivot = ar[0];
 
-        for(int i=1; i < ar.length; i++) {
+        for (int i = 1; i < ar.length; i++) {
             if (ar[i] < pivot) {
                 left.add(ar[i]);
             } else {
@@ -32,7 +31,7 @@ public class QuicksortPartOne {
     }
 
     private static void printElements(int[] equal, List<Integer> left, List<Integer> right) {
-        left.forEach(e -> System.out.print(e + " ") );
+        left.forEach(e -> System.out.print(e + " "));
         Arrays.stream(equal).forEach(e -> System.out.print(e + " "));
         right.forEach(e -> System.out.print(e + " "));
     }

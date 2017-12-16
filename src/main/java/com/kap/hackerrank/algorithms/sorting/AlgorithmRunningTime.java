@@ -1,6 +1,7 @@
 package com.kap.hackerrank.algorithms.sorting;
 
-import static com.kap.hackerrank.Utils.readSizeAndElementsOfIntArray;
+import static com.kap.hackerrank.ArrayUtils.less;
+import static com.kap.hackerrank.IOUtils.readSizeAndElementsOfIntArrayToComparable;
 
 /**
  * @author Konstantinos Antoniou
@@ -8,18 +9,18 @@ import static com.kap.hackerrank.Utils.readSizeAndElementsOfIntArray;
 public class AlgorithmRunningTime {
 
     public static void main(String[] args) {
-        int[] ar = readSizeAndElementsOfIntArray();
+        Comparable[] ar = readSizeAndElementsOfIntArrayToComparable();
         int shifts = insertionSortPart2(ar);
         System.out.println(shifts);
     }
 
-    public static int insertionSortPart2(int[] ar) {
-        int temp;
+    public static int insertionSortPart2(Comparable[] ar) {
+        Comparable temp;
         int i;
         int shifts = 0;
         for (int j = 1; j < ar.length; j++) {
             temp = ar[j];
-            for (i = j; (i > 0) && (temp < ar[i - 1]); i--) {
+            for (i = j; (i > 0) && less(temp,ar[i - 1]); i--) {
                 ar[i] = ar[i - 1];
                 shifts += 1;
             }

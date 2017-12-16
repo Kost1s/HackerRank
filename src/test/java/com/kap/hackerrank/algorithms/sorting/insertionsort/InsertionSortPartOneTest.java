@@ -8,30 +8,30 @@ import static org.junit.Assert.assertTrue;
 public class InsertionSortPartOneTest {
 
     @Test
-    public void arrayIsSortedElementOneBeforeTheEnd() throws Exception {
-        int[] ar = {2, 4, 6, 8, 3};
-        InsertionSortPartOne.insertIntoSorted(ar);
+    public void arrayIsSortedFirstElementAtTheStartTwoStepsSwapMethod() {
+        Comparable[] ar = {2, 4, 6, 8, 3};
+        InsertionSortPartOne.insertIntoSortedPartOneTwoStepsSwap(ar);
         assertTrue(isSorted(ar));
     }
 
     @Test
-    public void arrayIsSortedElementExactlyTheEnd() throws Exception {
-        int[] ar = {2, 4, 6, 8, 1};
-        InsertionSortPartOne.insertIntoSorted(ar);
+    public void arrayIsSortedFirstElementAtTheEndTwoStepsSwapMethod() {
+        Comparable[] ar = {2, 4, 6, 8, 1};
+        InsertionSortPartOne.insertIntoSortedPartOneTwoStepsSwap(ar);
         assertTrue(isSorted(ar));
     }
 
     @Test
-    public void arrayIsSortedElementOneBeforeTheEndDirectMethod() throws Exception {
-        int[] ar = {2, 4, 6, 8, 3};
-        InsertionSortPartOne.insertIntoSortedDirect(ar);
+    public void arrayIsSortedFirstElementAtTheStartDirectSwapMethod() {
+        Comparable[] ar = {2, 4, 6, 8, 3};
+        InsertionSortPartOne.insertIntoSortedPartOneDirectSwap(ar);
         assertTrue(isSorted(ar));
     }
 
     @Test
-    public void arrayIsSortedElementExactlyTheEndDirectMethod() throws Exception {
-        int[] ar = {2, 4, 6, 8, 1};
-        InsertionSortPartOne.insertIntoSortedDirect(ar);
+    public void arrayIsSortedFirstElementAtTheEndDirectSwapMethod() {
+        Comparable[] ar = {2, 4, 6, 8, 1};
+        InsertionSortPartOne.insertIntoSortedPartOneDirectSwap(ar);
         assertTrue(isSorted(ar));
     }
 

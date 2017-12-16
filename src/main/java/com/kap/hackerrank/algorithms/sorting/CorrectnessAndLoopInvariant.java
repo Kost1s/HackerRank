@@ -1,8 +1,8 @@
 package com.kap.hackerrank.algorithms.sorting;
 
-import java.util.Scanner;
-
-import static com.kap.hackerrank.Utils.readSizeAndElementsOfIntArray;
+import static com.kap.hackerrank.ArrayUtils.less;
+import static com.kap.hackerrank.ArrayUtils.printArray;
+import static com.kap.hackerrank.IOUtils.readSizeAndElementsOfIntArrayToComparable;
 
 /**
  * @author Konstantinos Antoniou
@@ -10,27 +10,21 @@ import static com.kap.hackerrank.Utils.readSizeAndElementsOfIntArray;
 public class CorrectnessAndLoopInvariant {
 
     public static void main(String[] args) {
-        int[] ar = readSizeAndElementsOfIntArray();
+        Comparable[] ar = readSizeAndElementsOfIntArrayToComparable();
         insertionSort(ar);
     }
 
-    public static void insertionSort(int[] a){
+    public static void insertionSort(Comparable[] a){
         for(int i = 1; i < a.length; i++){
-            int value = a[i];
+            Comparable value = a[i];
             int j = i;
-            while((j > 0) && (a[j-1] > value)){
+            while((j > 0) && less(value, a[j-1])  ){
                 a[j] = a[j-1];
                 j = j - 1;
             }
             a[j] = value;
         }
         printArray(a);
-    }
-
-    private static void printArray(int[] ar) {
-        for(int n: ar){
-            System.out.print(n+" ");
-        }
     }
 
 }

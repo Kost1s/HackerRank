@@ -1,19 +1,20 @@
 package com.kap.hackerrank.algorithms.sorting.insertionsort;
 
-import static com.kap.hackerrank.Utils.readSizeAndElementsOfIntArray;
+import static com.kap.hackerrank.ArrayUtils.less;
+import static com.kap.hackerrank.ArrayUtils.printArray;
+import static com.kap.hackerrank.IOUtils.readSizeAndElementsOfIntArrayToComparable;
 
 public class InsertionSortPartOne {
 
     public static void main(String[] args) {
-        int[] ar = readSizeAndElementsOfIntArray();
-        insertIntoSorted(ar);
+        Comparable[] ar = readSizeAndElementsOfIntArrayToComparable();
+        insertIntoSortedPartOneTwoStepsSwap(ar);
     }
 
-    //hackerrank implementation
-    public static void insertIntoSorted(int[] ar) {
-        int temp = ar[ar.length - 1];
+    public static void insertIntoSortedPartOneTwoStepsSwap(Comparable[] ar) {
+        Comparable temp = ar[ar.length - 1];
         int i;
-        for (i = ar.length - 1; (i > 0) && (temp < ar[i - 1]); i--) {
+        for (i = ar.length - 1; (i > 0) && less(temp, ar[i - 1]); i--) {
             ar[i] = ar[i - 1];
             printArray(ar);
         }
@@ -21,21 +22,14 @@ public class InsertionSortPartOne {
         printArray(ar);
     }
 
-    //direct swap of elements implementation
-    public static void insertIntoSortedDirect(int[] ar) {
-        int temp = ar[ar.length - 1];
+    public static void insertIntoSortedPartOneDirectSwap(Comparable[] ar) {
+        Comparable temp = ar[ar.length - 1];
         int i;
-        for (i = ar.length - 1; (i > 0) && (temp < ar[i - 1]); i--) {
+        for (i = ar.length - 1; (i > 0) && less(temp, ar[i - 1]); i--) {
             ar[i] = ar[i - 1];
             ar[i - 1] = temp;
             printArray(ar);
         }
     }
 
-    private static void printArray(int[] ar) {
-        for (int n : ar) {
-            System.out.print(n + " ");
-        }
-        System.out.println("");
-    }
 }

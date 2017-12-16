@@ -10,8 +10,8 @@ import static org.junit.Assert.assertTrue;
 public class AlgorithmRunningTimeTest {
 
     @Test
-    public void arrayIsSortedSameElements() throws Exception {
-        int[] ar = {2, 1, 3, 1, 2};
+    public void arrayIsSortedSameElements() {
+        Comparable[] ar = {2, 1, 3, 1, 2};
         int shifts = AlgorithmRunningTime.insertionSortPart2(ar);
         assertTrue(shifts == 4);
     }

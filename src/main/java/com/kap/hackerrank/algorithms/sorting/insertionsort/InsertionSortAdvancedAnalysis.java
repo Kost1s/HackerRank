@@ -1,47 +1,61 @@
 package com.kap.hackerrank.algorithms.sorting.insertionsort;
 
-import java.util.Scanner;
-
-import static com.kap.hackerrank.Utils.readSizeAndElementsOfIntArray;
+import static com.kap.hackerrank.ArrayUtils.less;
 
 public class InsertionSortAdvancedAnalysis {
 
+    private static int inversions;
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int queries = sc.nextInt();
-        for(int q=0; q < queries; q++) {
-            int[] ar = readSizeAndElementsOfIntArray();
-            int shifts = insertionSortPartTwoDirectShifts(ar);
-            System.out.println(shifts);
-        }
+        Comparable[] a = {6, 3, 2, 5, 7, 4, 8, 1};
+        sort(a);
+        System.out.println(inversions);
     }
 
-    public static int insertionSortPartTwoDirectShifts(int[] ar) {
-        int temp;
-        int i;
-        int shifts = 0;
-        if(isSorted(ar)) {
-            return shifts;
-        } else {
-            for (int j = 1; j < ar.length; j++) {
-                temp = ar[j];
-                for (i = j; (i > 0) && (temp < ar[i - 1]); i--) {
-                    ar[i] = ar[i - 1];
-                    ar[i - 1] = temp;
-                    shifts += 1;
-                }
-            }
-        }
-        return shifts;
+    public static void sort(Comparable[] a) {
+        Comparable[] aux = new Comparable[a.length];
+        sort(a, aux, 0, a.length-1);
     }
 
-    private static boolean isSorted(int[] ar) {
-        for(int i=ar.length - 1; i>0; i--) {
-            if(ar[i] < ar[i-1]) {
-                return false;
+    private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
+        if (hi <= lo) {
+            return;
+        }
+        int mid = lo + ((hi - lo) / 2);
+
+        sort(a, aux, lo, mid);
+        sort(a, aux, mid + 1, hi);
+        inversions += merge(a, aux, lo, mid, hi);
+    }
+
+    private static int merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
+        // copy to aux[]
+        for (int k = lo; k <= hi; k++) {
+            aux[k] = a[k];
+        }
+
+        // merge back to a[] and count inversions during merge
+        int s = 0;
+        int inv = 0;
+        int i = lo;
+        int j = mid+1;
+        for (int k = lo; k <= hi; k++) {
+            if      (i > mid) {
+                a[k] = aux[j++];
+                s++;
+            } else if (j > hi) {
+                a[k] = aux[i++];
+                inv += s;
+            }  else if (less(aux[j], aux[i])) {
+                a[k] = aux[j++];
+                s++;
+            } else {
+                a[k] = aux[i++];
+                inv += s;
             }
         }
-        return true;
+
+        return inv;
     }
 
 }

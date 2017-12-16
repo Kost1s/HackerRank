@@ -12,8 +12,8 @@ import static org.junit.Assert.assertTrue;
 public class CorrectnessAndLoopInvariantTest {
 
     @Test
-    public void arrayIsSorted() throws Exception {
-        int[] ar = {4, 1, 3, 5, 6, 2};
+    public void arrayIsSorted() {
+        Comparable[] ar = {4, 1, 3, 5, 6, 2};
         CorrectnessAndLoopInvariant.insertionSort(ar);
         assertTrue(isSorted(ar));
     }
