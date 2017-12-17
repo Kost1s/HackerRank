@@ -1,13 +1,14 @@
 package com.kap.hackerrank.algorithms.sorting.insertionsort;
 
 import static com.kap.hackerrank.ArrayUtils.less;
+import static com.kap.hackerrank.IOUtils.readSizeAndElementsOfIntArrayToComparable;
 
 public class InsertionSortAdvancedAnalysis {
 
     private static long inversions;
 
     public static void main(String[] args) {
-        Comparable[] ar = {6, 3, 2, 5, 7, 4, 8, 1};
+        Comparable[] ar = readSizeAndElementsOfIntArrayToComparable();
         sort(ar);
         System.out.println(inversions);
     }
