@@ -3,7 +3,7 @@ package com.kap.hackerrank.algorithms.sorting.insertionsort;
 import static com.kap.hackerrank.ArrayUtils.less;
 import static com.kap.hackerrank.IOUtils.readSizeAndElementsOfIntArrayToComparable;
 
-public class InsertionSortAdvancedAnalysis {
+public class InsertionSortAdvancedAnalysisExperiment {
 
     private static long inversions;
 
@@ -45,7 +45,7 @@ public class InsertionSortAdvancedAnalysis {
 
         // merge back to a[] and count inversions during merge
         int s = 0;
-        int inv = 0;
+        long inv = 0;
         int i = lo;
         int j = mid+1;
         for (int k = lo; k <= hi; k++) {

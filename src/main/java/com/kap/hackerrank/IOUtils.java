@@ -24,6 +24,19 @@ public class IOUtils {
         return ar;
     }
 
+    public static void readSizeAndElementsOfIntArraysToComparable() {
+        Scanner sc = new Scanner(System.in);
+        int queries = sc.nextInt();
+
+        for(int q=0; q < queries; q++) {
+            int s = sc.nextInt();
+            Comparable[] ar = new Comparable[s];
+            for (int i = 0; i < s; i++) {
+                ar[i] = sc.nextInt();
+            }
+        }
+    }
+
     public static Comparable[] readSizeAndElementsOfStringArrayToComparable() {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
