@@ -1,16 +1,27 @@
 package com.kap.hackerrank.algorithms.sorting.insertionsort;
 
-import static com.kap.hackerrank.ArrayUtils.less;
-import static com.kap.hackerrank.IOUtils.readSizeAndElementsOfIntArrayToComparable;
+import java.util.Scanner;
 
-public class InsertionSortAdvancedAnalysisExperiment {
+import static com.kap.hackerrank.ArrayUtils.less;
+
+public class InsertionSortAdvancedAnalysis {
 
     private static long inversions;
 
     public static void main(String[] args) {
-        Comparable[] ar = readSizeAndElementsOfIntArrayToComparable();
-        sort(ar);
-        System.out.println(inversions);
+        Scanner sc = new Scanner(System.in);
+        int queries = sc.nextInt();
+
+        for(int q=0; q < queries; q++) {
+            inversions = 0;
+            int s = sc.nextInt();
+            Comparable[] ar = new Comparable[s];
+            for (int i = 0; i < s; i++) {
+                ar[i] = sc.nextInt();
+            }
+            sort(ar);
+            System.out.println(inversions);
+        }
     }
 
     // test only method

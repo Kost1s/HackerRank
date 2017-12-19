@@ -28,15 +28,15 @@ public class DiagonalDifference {
                     sumPrimary = sumPrimary + array[i][j];
                 }
 
-                if (i == j && i == posMedian && posMedian != 0) {
+                if ((i == j) && (i == posMedian) && (posMedian != 0)) {
                     sumSecondary = sumSecondary + array[i][j];
                 }
 
-                if(i < j && (rDimension - 1) - j == i) {
+                if((i < j) && (((rDimension - 1) - j) == i)) {
                     sumSecondary = sumSecondary + array[i][j];
                 }
 
-                if(i > j && (rDimension - 1) - i == j) {
+                if((i > j) && (((rDimension - 1) - i) == j)) {
                     sumSecondary = sumSecondary + array[i][j];
                 }
             }

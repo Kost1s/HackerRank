@@ -25,8 +25,8 @@ public class StringTokens {
         } else {
             System.out.println(tokens.length);
 
-            for(int i = 0; i < tokens.length; i++) {
-                System.out.println(tokens[i]);
+            for (String token : tokens) {
+                System.out.println(token);
             }
         }
 

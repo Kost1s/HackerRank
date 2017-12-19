@@ -13,7 +13,7 @@ public class Staircase {
         int staircaseSize = scanner.nextInt();
 
         for(int i = 1; i <= staircaseSize; i++) {
-            for(int k = 0; k < staircaseSize - i; k++) {
+            for(int k = 0; k < (staircaseSize - i); k++) {
                 System.out.print(" ");
             }
             for(int j = 1; j <=i; j++) {

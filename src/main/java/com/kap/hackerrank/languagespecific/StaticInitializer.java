@@ -16,7 +16,7 @@ public class StaticInitializer {
         b = sc.nextInt();
         h = sc.nextInt();
 
-        if(b >=0 && h >=0) {
+        if((b >= 0) && (h >= 0)) {
             flag = true;
         } else {
             System.out.println("java.lang.Exception: Breadth and height must be positive");
@@ -29,7 +29,7 @@ public class StaticInitializer {
             System.out.print(area);
         }
 
-    }//end of main
+    }
 
-}//end of class
+}
 
