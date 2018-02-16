@@ -3,7 +3,7 @@ package com.kap.hackerrank.algorithms.sorting;
 import java.math.BigInteger;
 import java.util.*;
 
-import static com.kap.hackerrank.IOUtils.readSizeAndElementsOfStringArray;
+import static com.kap.hackerrank.util.IOUtils.readSizeAndElementsOfStringArray;
 
 public class BigSorting {
 

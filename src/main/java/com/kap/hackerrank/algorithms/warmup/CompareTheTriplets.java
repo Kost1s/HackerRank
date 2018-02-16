@@ -1,6 +1,5 @@
 package com.kap.hackerrank.algorithms.warmup;
 
-import java.math.BigInteger;
 import java.util.*;
 
 /**
@@ -22,6 +21,7 @@ public class CompareTheTriplets {
 
         public static void main(String[] args) {
             Scanner in = new Scanner(System.in);
+
             int a0 = in.nextInt();
             int a1 = in.nextInt();
             int a2 = in.nextInt();
@@ -29,7 +29,10 @@ public class CompareTheTriplets {
             int b1 = in.nextInt();
             int b2 = in.nextInt();
             int[] result = solve(a0, a1, a2, b0, b1, b2);
-            String separator = "", delimiter = " ";
+
+            String separator = "";
+            String delimiter = " ";
+
             for (Integer value : result) {
                 System.out.print(separator + value);
                 separator = delimiter;

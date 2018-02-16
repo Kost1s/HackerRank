@@ -1,8 +1,8 @@
 package com.kap.hackerrank.algorithms.sorting.mergesort;
 
-import static com.kap.hackerrank.ArrayUtils.less;
-import static com.kap.hackerrank.ArrayUtils.showArray;
-import static com.kap.hackerrank.IOUtils.readSizeAndElementsOfIntArrayToComparable;
+import static com.kap.hackerrank.util.ArrayUtils.less;
+import static com.kap.hackerrank.util.ArrayUtils.showArray;
+import static com.kap.hackerrank.util.IOUtils.readSizeAndElementsOfIntArrayToComparable;
 
 public class MergeSort {
 

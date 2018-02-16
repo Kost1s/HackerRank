@@ -1,4 +1,4 @@
-package com.kap.hackerrank.languagespecific.Factory;
+package com.kap.hackerrank.languagespecific.factory;
 
 /**
  * @author Konstantinos Antoniou
@@ -8,7 +8,8 @@ public class Student {
     private int id;
     private String fname;
     private double cgpa;
-    public Student(String fname, double cgpa, int token) {
+
+    public Student(int token, String fname, double cgpa) {
         super();
         this.id = token;
         this.fname = fname;

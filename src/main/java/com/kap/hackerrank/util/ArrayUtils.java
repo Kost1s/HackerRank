@@ -1,6 +1,10 @@
-package com.kap.hackerrank;
+package com.kap.hackerrank.util;
 
 public class ArrayUtils {
+
+    private ArrayUtils() {
+        // intentionally blank
+    }
 
     public static boolean isSorted(Comparable[] a, int lo, int hi) {
         for (int i = lo + 1; i <= hi; i++)

@@ -1,7 +1,7 @@
 package com.kap.hackerrank.languagespecific.datastructures;
 
-import com.kap.hackerrank.languagespecific.Factory.Student;
-import com.kap.hackerrank.languagespecific.Util.StudentComparator;
+import com.kap.hackerrank.languagespecific.factory.Student;
+import com.kap.hackerrank.languagespecific.comparators.StudentComparator;
 
 import java.util.*;
 /**
@@ -28,11 +28,10 @@ public class PrQueue {
                 priorityQueue.add(new Student(fname, cgpa, token));
             }
 
-            if (event.equals("SERVED")) {
-                if (!priorityQueue.isEmpty()) {
+            if (event.equals("SERVED") && (!priorityQueue.isEmpty())) {
                     priorityQueue.remove();
                 }
-            }
+
             totalEvents--;
         }
 

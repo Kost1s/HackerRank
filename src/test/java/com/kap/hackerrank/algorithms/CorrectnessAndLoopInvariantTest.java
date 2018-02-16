@@ -3,7 +3,7 @@ package com.kap.hackerrank.algorithms;
 import com.kap.hackerrank.algorithms.sorting.CorrectnessAndLoopInvariant;
 import org.junit.Test;
 
-import static org.apache.commons.lang3.ArrayUtils.isSorted;
+import static com.kap.hackerrank.util.ArrayUtils.isSorted;
 import static org.junit.Assert.assertTrue;
 
 /**

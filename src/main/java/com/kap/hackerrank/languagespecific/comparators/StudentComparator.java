@@ -1,6 +1,6 @@
-package com.kap.hackerrank.languagespecific.Util;
+package com.kap.hackerrank.languagespecific.comparators;
 
-import com.kap.hackerrank.languagespecific.Factory.Student;
+import com.kap.hackerrank.languagespecific.factory.Student;
 
 import java.util.Comparator;
 

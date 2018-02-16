@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.kap.hackerrank.IOUtils.readSizeAndElementsOfIntArray;
+import static com.kap.hackerrank.util.IOUtils.readSizeAndElementsOfIntArray;
 
 public class QuicksortPartOne {
 

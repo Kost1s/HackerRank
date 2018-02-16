@@ -1,8 +1,8 @@
 package com.kap.hackerrank.algorithms.sorting;
 
-import static com.kap.hackerrank.ArrayUtils.less;
-import static com.kap.hackerrank.ArrayUtils.printArray;
-import static com.kap.hackerrank.IOUtils.readSizeAndElementsOfIntArrayToComparable;
+import static com.kap.hackerrank.util.ArrayUtils.less;
+import static com.kap.hackerrank.util.ArrayUtils.printArray;
+import static com.kap.hackerrank.util.IOUtils.readSizeAndElementsOfIntArrayToComparable;
 
 /**
  * @author Konstantinos Antoniou

@@ -2,7 +2,7 @@ package com.kap.hackerrank.algorithms.sorting.insertionsort;
 
 import java.util.Scanner;
 
-import static com.kap.hackerrank.ArrayUtils.less;
+import static com.kap.hackerrank.util.ArrayUtils.less;
 
 public class InsertionSortAdvancedAnalysis {
 
