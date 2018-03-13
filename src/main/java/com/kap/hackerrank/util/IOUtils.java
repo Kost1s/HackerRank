@@ -11,6 +11,7 @@ public class IOUtils {
         for (int i = 0; i < s; i++) {
             ar[i] = in.nextInt();
         }
+        in.close();
         return ar;
     }
 
