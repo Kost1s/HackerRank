@@ -4,6 +4,7 @@ import com.kap.hackerrank.languagespecific.factory.Student;
 import com.kap.hackerrank.languagespecific.comparators.StudentComparator;
 
 import java.util.*;
+
 /**
  * @author Konstantinos Antoniou
  */
@@ -16,7 +17,7 @@ public class PrQueue {
         Scanner in = new Scanner(System.in);
         int totalEvents = Integer.parseInt(in.nextLine());
 
-        while(totalEvents>0){
+        while (totalEvents > 0) {
 
             String event = in.next();
 
@@ -25,12 +26,12 @@ public class PrQueue {
                 double cgpa = in.nextDouble();
                 int token = in.nextInt();
 
-                priorityQueue.add(new Student(fname, cgpa, token));
+                priorityQueue.add(new Student(token, fname, cgpa));
             }
 
             if (event.equals("SERVED") && (!priorityQueue.isEmpty())) {
-                    priorityQueue.remove();
-                }
+                priorityQueue.remove();
+            }
 
             totalEvents--;
         }
