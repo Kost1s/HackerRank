@@ -21,30 +21,27 @@ public class ClosestNumbers {
 
     public static int[] closestNumbers(int[] ar) {
         Arrays.sort(ar);
-        return mapDifferences(ar);
+        return getMinDiffPairs(ar);
     }
 
-    private static int[] mapDifferences(int[] ar) {
+    private static int[] getMinDiffPairs(int[] ar) {
         int j = 0;
+        int newDiff;
         int prevDiff = Math.abs(ar[j] - ar[j + 1]);
         List<Integer> arrayPairs = new LinkedList<>();
 
-        int newDiff;
         while (j < (ar.length - 1)) {
             newDiff = Math.abs(ar[j] - ar[j + 1]);
-            if(newDiff == prevDiff) {
+
+            if(newDiff <= prevDiff) {
+                if(newDiff < prevDiff) {
+                    arrayPairs.clear();
+                }
+
+                prevDiff = newDiff;
                 arrayPairs.add(ar[j]);
                 arrayPairs.add(ar[j + 1]);
-                prevDiff = newDiff;
             }
-
-            if(newDiff < prevDiff) {
-                arrayPairs.clear();
-                arrayPairs.add(ar[j]);
-                arrayPairs.add(ar[j + 1]);
-                prevDiff = newDiff;
-            }
-
             j++;
         }
 
