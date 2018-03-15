@@ -26,6 +26,6 @@ public class IceCreamParlorTest {
 
         int[] result = IceCreamParlor.getFlavorNumbers(moneyPooled, flavorsCosts);
         assertTrue(result[0] == 1);
-        assertTrue(result[1] == 4);
+        assertTrue(result[1] == 2);
     }
 }
