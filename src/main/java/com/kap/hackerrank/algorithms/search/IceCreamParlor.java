@@ -55,13 +55,12 @@ public class IceCreamParlor {
 
     private static Map<Integer, List<Integer>> getFlavorsMap(int[] flavors) {
         Map<Integer, List<Integer>> flavorsMap = new HashMap<>();
+        List<Integer> flavorsNumbers;
 
         for(int i=0; i<flavors.length; i++) {
-            List<Integer> flavorsNumbers = new ArrayList<>();
 
             if(!flavorsMap.containsKey(flavors[i])) {
-                flavorsNumbers.add(i+1);
-                flavorsMap.put(flavors[i], flavorsNumbers);
+                flavorsMap.put(flavors[i], new ArrayList<>(Collections.singletonList(i+1)));
             } else {
                 flavorsNumbers = flavorsMap.get(flavors[i]);
                 flavorsNumbers.add(i+1);
