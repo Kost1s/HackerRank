@@ -37,15 +37,15 @@ public class IceCreamParlor {
 
         flavorsMap = getFlavorsMap(flavors);
         Arrays.sort(flavors);
-        for(int i=0; i<flavors.length; i++) {
-            int secondFlavorIndex = binarySearch(flavors, moneyPooled - flavors[i]);
-            if((secondFlavorIndex >= 0) && (flavors[i] != flavors[secondFlavorIndex])) {
-                flavorsNumbers[0] =  flavorsMap.get(flavors[i]).get(0);
-                flavorsNumbers[1] =  flavorsMap.get(flavors[secondFlavorIndex]).get(0);
+        for (final int flavor : flavors) {
+            int secondFlavorIndex = binarySearch(flavors, moneyPooled - flavor);
+            if ((secondFlavorIndex >= 0) && (flavor != flavors[secondFlavorIndex])) {
+                flavorsNumbers[0] = flavorsMap.get(flavor).get(0);
+                flavorsNumbers[1] = flavorsMap.get(flavors[secondFlavorIndex]).get(0);
                 break;
-            } else if ((secondFlavorIndex >= 0) && (flavors[i] == flavors[secondFlavorIndex])) {
-                flavorsNumbers[0] =  flavorsMap.get(flavors[i]).get(0);
-                flavorsNumbers[1] =  flavorsMap.get(flavors[secondFlavorIndex]).get(1);
+            } else if ((secondFlavorIndex >= 0) && (flavor == flavors[secondFlavorIndex])) {
+                flavorsNumbers[0] = flavorsMap.get(flavor).get(0);
+                flavorsNumbers[1] = flavorsMap.get(flavors[secondFlavorIndex]).get(1);
                 break;
             }
         }
