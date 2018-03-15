@@ -27,8 +27,6 @@ public class IceCreamParlor {
                 System.out.print(result[i] + (i != result.length - 1 ? " " : ""));
             }
             System.out.println("");
-
-
         }
         in.close();
     }
