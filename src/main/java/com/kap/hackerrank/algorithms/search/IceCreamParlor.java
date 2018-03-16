@@ -2,8 +2,6 @@ package com.kap.hackerrank.algorithms.search;
 
 import java.util.*;
 
-import static java.util.Arrays.binarySearch;
-
 /**
  * @author Konstantinos Antoniou
  */
@@ -32,19 +30,20 @@ public class IceCreamParlor {
     }
 
     public static int[] getFlavorNumbers(int moneyPooled, int[] flavors) {
-        Map<Integer, List<Integer>> flavorsMap;
-        int[] flavorsCosts;
+        Map<Integer, List<Integer>> flavorsMap = getFlavorsMap(flavors);
         int[] flavorsNumbers = new int[2];
 
-        flavorsMap = getFlavorsMap(flavors);
-        flavorsCosts = getFlavorCosts(moneyPooled, flavors);
-
-        if (flavorsCosts[0] != flavorsCosts[1]) {
-            flavorsNumbers[0] = flavorsMap.get(flavorsCosts[0]).get(0);
-            flavorsNumbers[1] = flavorsMap.get(flavorsCosts[1]).get(0);
-        } else {
-            flavorsNumbers[0] = flavorsMap.get(flavorsCosts[0]).get(0);
-            flavorsNumbers[1] = flavorsMap.get(flavorsCosts[1]).get(1);
+        Arrays.sort(flavors);
+        for (final int flavor : flavors) {
+            int diff = moneyPooled - flavor;
+            if (flavorsMap.containsKey(diff)) {
+                flavorsNumbers[0] = flavorsMap.get(flavor).get(0);
+                flavorsNumbers[1] = flavorsMap.get(diff).get(0);
+                if (flavorsMap.get(diff).size() > 1) {
+                    flavorsNumbers[1] = flavorsMap.get(diff).get(1);
+                }
+                break;
+            }
         }
 
         Arrays.sort(flavorsNumbers);
@@ -65,21 +64,6 @@ public class IceCreamParlor {
             }
         }
         return flavorsMap;
-    }
-
-    private static int[] getFlavorCosts(int moneyPooled, int[] flavorsCosts) {
-        int[] flavorsNumbers = new int[2];
-
-        Arrays.sort(flavorsCosts);
-        for (int i = 0; i < flavorsCosts.length; i++) {
-            int secondFlavorIndex = binarySearch(flavorsCosts, (moneyPooled - flavorsCosts[i]));
-            if ((secondFlavorIndex >= 0) && (i != secondFlavorIndex)) {
-                flavorsNumbers[0] = flavorsCosts[i];
-                flavorsNumbers[1] = flavorsCosts[secondFlavorIndex];
-                break;
-            }
-        }
-        return flavorsNumbers;
     }
 
 }
