@@ -2,8 +2,6 @@ package com.kap.hackerrank.algorithms.search;
 
 import java.util.*;
 
-import static java.util.Arrays.binarySearch;
-
 /**
  * @author Konstantinos Antoniou
  */
@@ -36,17 +34,19 @@ public class IceCreamParlor {
         int[] flavorsNumbers =  new int[2];
 
         flavorsMap = getFlavorsMap(flavors);
-        Arrays.sort(flavors);
         for (final int flavor : flavors) {
             int diff = moneyPooled - flavor;
             if(flavorsMap.containsKey(diff)) {
                 flavorsNumbers[0] = flavorsMap.get(flavor).get(0);
                 if((diff != flavor)) {
                     flavorsNumbers[1] = flavorsMap.get(diff).get(0);
-                } else {
+                }
+                if ((diff == flavor) && (flavorsMap.get(diff).size() > 1)) {
                     flavorsNumbers[1] = flavorsMap.get(diff).get(1);
                 }
-                break;
+                if((flavorsNumbers[0] != 0) && (flavorsNumbers[1] != 0)){
+                    break;
+                }
             }
         }
         Arrays.sort(flavorsNumbers);
