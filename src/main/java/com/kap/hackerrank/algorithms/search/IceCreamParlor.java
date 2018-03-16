@@ -11,12 +11,12 @@ public class IceCreamParlor {
         Scanner in = new Scanner(System.in);
 
         int trips = in.nextInt();
-        for(int t = 0; t < trips; t++){
+        for (int t = 0; t < trips; t++) {
             int moneyPooled = in.nextInt();
             int numberOfFlavors = in.nextInt();
 
             int[] inputAr = new int[numberOfFlavors];
-            for(int i = 0; i < numberOfFlavors; i++){
+            for (int i = 0; i < numberOfFlavors; i++) {
                 inputAr[i] = in.nextInt();
             }
 
@@ -30,25 +30,22 @@ public class IceCreamParlor {
     }
 
     public static int[] getFlavorNumbers(int moneyPooled, int[] flavors) {
-        Map<Integer, List<Integer>> flavorsMap;
-        int[] flavorsNumbers =  new int[2];
+        Map<Integer, List<Integer>> flavorsMap = getFlavorsMap(flavors);
+        int[] flavorsNumbers = new int[2];
 
-        flavorsMap = getFlavorsMap(flavors);
+        Arrays.sort(flavors);
         for (final int flavor : flavors) {
             int diff = moneyPooled - flavor;
-            if(flavorsMap.containsKey(diff)) {
+            if (flavorsMap.containsKey(diff)) {
                 flavorsNumbers[0] = flavorsMap.get(flavor).get(0);
-                if((diff != flavor)) {
-                    flavorsNumbers[1] = flavorsMap.get(diff).get(0);
-                }
-                if ((diff == flavor) && (flavorsMap.get(diff).size() > 1)) {
+                flavorsNumbers[1] = flavorsMap.get(diff).get(0);
+                if (flavorsMap.get(diff).size() > 1) {
                     flavorsNumbers[1] = flavorsMap.get(diff).get(1);
                 }
-                if((flavorsNumbers[0] != 0) && (flavorsNumbers[1] != 0)){
-                    break;
-                }
+                break;
             }
         }
+
         Arrays.sort(flavorsNumbers);
         return flavorsNumbers;
     }
@@ -57,12 +54,12 @@ public class IceCreamParlor {
         Map<Integer, List<Integer>> flavorsMap = new HashMap<>();
         List<Integer> flavorsNumbers;
 
-        for(int i=0; i<flavors.length; i++) {
-            if(!flavorsMap.containsKey(flavors[i])) {
-                flavorsMap.put(flavors[i], new ArrayList<>(Collections.singletonList(i+1)));
+        for (int i = 0; i < flavors.length; i++) {
+            if (!flavorsMap.containsKey(flavors[i])) {
+                flavorsMap.put(flavors[i], new ArrayList<>(Collections.singletonList(i + 1)));
             } else {
                 flavorsNumbers = flavorsMap.get(flavors[i]);
-                flavorsNumbers.add(i+1);
+                flavorsNumbers.add(i + 1);
                 flavorsMap.put(flavors[i], flavorsNumbers);
             }
         }
