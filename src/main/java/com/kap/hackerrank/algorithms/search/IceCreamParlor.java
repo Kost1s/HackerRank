@@ -38,18 +38,17 @@ public class IceCreamParlor {
         flavorsMap = getFlavorsMap(flavors);
         Arrays.sort(flavors);
         for (final int flavor : flavors) {
-            int secondFlavorIndex = binarySearch(flavors, moneyPooled - flavor);
-            if ((secondFlavorIndex >= 0) && (flavor != flavors[secondFlavorIndex])) {
+            int diff = moneyPooled - flavor;
+            if(flavorsMap.containsKey(diff)) {
                 flavorsNumbers[0] = flavorsMap.get(flavor).get(0);
-                flavorsNumbers[1] = flavorsMap.get(flavors[secondFlavorIndex]).get(0);
-                break;
-            } else if ((secondFlavorIndex >= 0) && (flavor == flavors[secondFlavorIndex])) {
-                flavorsNumbers[0] = flavorsMap.get(flavor).get(0);
-                flavorsNumbers[1] = flavorsMap.get(flavors[secondFlavorIndex]).get(1);
+                if((diff != flavor)) {
+                    flavorsNumbers[1] = flavorsMap.get(diff).get(0);
+                } else {
+                    flavorsNumbers[1] = flavorsMap.get(diff).get(1);
+                }
                 break;
             }
         }
-
         Arrays.sort(flavorsNumbers);
         return flavorsNumbers;
     }
