@@ -1,7 +1,7 @@
 package com.kap.hackerrank.algorithms.sorting.insertionsort;
 
 import static com.kap.hackerrank.util.ArrayUtils.less;
-import static com.kap.hackerrank.util.ArrayUtils.printArray;
+import static com.kap.hackerrank.util.ArrayUtils.printComparableArray;
 import static com.kap.hackerrank.util.IOUtils.readSizeAndElementsOfIntArrayToComparable;
 
 public class InsertionSortPartOne {
@@ -16,10 +16,10 @@ public class InsertionSortPartOne {
         int i;
         for (i = ar.length - 1; (i > 0) && less(temp, ar[i - 1]); i--) {
             ar[i] = ar[i - 1];
-            printArray(ar);
+            printComparableArray(ar);
         }
         ar[i] = temp;
-        printArray(ar);
+        printComparableArray(ar);
     }
 
     public static void insertIntoSortedPartOneDirectSwap(Comparable[] ar) {
@@ -28,7 +28,7 @@ public class InsertionSortPartOne {
         for (i = ar.length - 1; (i > 0) && less(temp, ar[i - 1]); i--) {
             ar[i] = ar[i - 1];
             ar[i - 1] = temp;
-            printArray(ar);
+            printComparableArray(ar);
         }
     }
 

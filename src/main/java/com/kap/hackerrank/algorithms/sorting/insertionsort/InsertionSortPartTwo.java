@@ -1,7 +1,7 @@
 package com.kap.hackerrank.algorithms.sorting.insertionsort;
 
 import static com.kap.hackerrank.util.ArrayUtils.less;
-import static com.kap.hackerrank.util.ArrayUtils.printArray;
+import static com.kap.hackerrank.util.ArrayUtils.printComparableArray;
 import static com.kap.hackerrank.util.IOUtils.readSizeAndElementsOfIntArrayToComparable;
 
 public class InsertionSortPartTwo {
@@ -20,7 +20,7 @@ public class InsertionSortPartTwo {
                 ar[i] = ar[i - 1];
             }
             ar[i] = temp;
-            printArray(ar);
+            printComparableArray(ar);
         }
     }
 
@@ -33,7 +33,7 @@ public class InsertionSortPartTwo {
                 ar[i] = ar[i - 1];
                 ar[i - 1] = temp;
             }
-            printArray(ar);
+            printComparableArray(ar);
         }
     }
 

@@ -2,10 +2,6 @@ package com.kap.hackerrank.util;
 
 public class ArrayUtils {
 
-    private ArrayUtils() {
-        // intentionally blank
-    }
-
     public static boolean isSorted(Comparable[] a, int lo, int hi) {
         for (int i = lo + 1; i <= hi; i++)
             if (less(a[i], a[i-1])) {
@@ -22,16 +18,44 @@ public class ArrayUtils {
         return v.compareTo(w) < 0;
     }
 
-    public static void showArray(Comparable[] ar) {
+    public static void showComparableArray(Comparable[] ar) {
         for (Comparable n : ar) {
             System.out.println(n);
         }
     }
 
-    public static void printArray(Comparable[] ar) {
+    public static void printComparableArray(Comparable[] ar) {
         for (Comparable n : ar) {
             System.out.print(n + " ");
         }
         System.out.println("");
     }
+
+    public static void showIntegerArray(int[] ar) {
+        for (int n : ar) {
+            System.out.println(n);
+        }
+    }
+
+    public static void printIntegerArray(int[] ar) {
+        for (int n : ar) {
+            System.out.print(n + " ");
+        }
+        System.out.println("");
+    }
+
+    public static void showStringArray(String[] ar) {
+        for (String n : ar) {
+            System.out.println(n);
+        }
+    }
+
+    public static void printStringArray(String[] ar) {
+        for (String n : ar) {
+            System.out.print(n + " ");
+        }
+        System.out.println("");
+    }
+
+
 }

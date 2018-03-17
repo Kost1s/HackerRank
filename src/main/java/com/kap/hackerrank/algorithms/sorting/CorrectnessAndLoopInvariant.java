@@ -1,7 +1,7 @@
 package com.kap.hackerrank.algorithms.sorting;
 
 import static com.kap.hackerrank.util.ArrayUtils.less;
-import static com.kap.hackerrank.util.ArrayUtils.printArray;
+import static com.kap.hackerrank.util.ArrayUtils.printComparableArray;
 import static com.kap.hackerrank.util.IOUtils.readSizeAndElementsOfIntArrayToComparable;
 
 /**
@@ -24,7 +24,7 @@ public class CorrectnessAndLoopInvariant {
             }
             a[j] = value;
         }
-        printArray(a);
+        printComparableArray(a);
     }
 
 }

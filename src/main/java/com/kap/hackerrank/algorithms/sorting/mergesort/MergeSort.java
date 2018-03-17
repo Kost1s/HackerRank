@@ -1,7 +1,7 @@
 package com.kap.hackerrank.algorithms.sorting.mergesort;
 
 import static com.kap.hackerrank.util.ArrayUtils.less;
-import static com.kap.hackerrank.util.ArrayUtils.showArray;
+import static com.kap.hackerrank.util.ArrayUtils.showComparableArray;
 import static com.kap.hackerrank.util.IOUtils.readSizeAndElementsOfIntArrayToComparable;
 
 public class MergeSort {
@@ -9,7 +9,7 @@ public class MergeSort {
     public static void main(String[] args) {
         Comparable[] ar = readSizeAndElementsOfIntArrayToComparable();
         sort(ar);
-        showArray(ar);
+        showComparableArray(ar);
     }
 
     public static void sort(Comparable[] ar) {
