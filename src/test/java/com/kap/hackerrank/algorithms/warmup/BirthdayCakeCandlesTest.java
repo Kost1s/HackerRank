@@ -10,7 +10,7 @@ public class BirthdayCakeCandlesTest {
     @Test
     public void candlesAreTwo() {
         int[] ar = {3, 2, 1, 3};
-        int result = BirthdayCakeCandles
+        //int result = BirthdayCakeCandles
     }
 
 }
