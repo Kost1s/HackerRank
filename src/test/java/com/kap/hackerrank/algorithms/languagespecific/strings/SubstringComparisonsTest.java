@@ -7,6 +7,9 @@ import java.util.List;
 
 import static junit.framework.TestCase.assertTrue;
 
+/**
+ * @author Konstantinos Antoniou
+ */
 public class SubstringComparisonsTest {
 
     @Test

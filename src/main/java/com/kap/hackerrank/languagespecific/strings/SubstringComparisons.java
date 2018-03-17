@@ -2,6 +2,9 @@ package com.kap.hackerrank.languagespecific.strings;
 
 import java.util.*;
 
+/**
+ * @author Konstantinos Antoniou
+ */
 public class SubstringComparisons {
 
     public static void main(String[] args) {
