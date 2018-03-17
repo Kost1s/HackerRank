@@ -11,28 +11,24 @@ public class BirthdayCakeCandles {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        int result = getResult(getBirthdayCakeCandles(sc, n));
+        int[] ar = new int[n];
+        for(int i=0; i<n; i++) {
+            ar[i] = sc.nextInt();
+        }
+
+        int result = getBirthdayCakeCandles(ar);
         System.out.println(result);
     }
 
-    private static Map<Integer, Integer> getBirthdayCakeCandles(Scanner sc, int arraySize) {
-        Map<Integer, Integer> heightsMap = new HashMap<>();
-
-        for (int i = 0; i < arraySize; i++) {
-            int height = sc.nextInt();
-            if (!heightsMap.containsKey(height)) {
-                heightsMap.put(height, 1);
-            } else {
-                int no = heightsMap.get(height);
-                heightsMap.put(height, no + 1);
+    public static int getBirthdayCakeCandles(int[] ar) {
+        Arrays.sort(ar);
+        int candles=0;
+        for(int i=ar.length-1; i>=0; i--) {
+            if(ar[i] == ar[(ar.length - 1)]) {
+                candles++;
             }
         }
-        return heightsMap;
-    }
-
-    private static int getResult(Map<Integer, Integer> heightsMap) {
-        int max = Collections.max(heightsMap.keySet());
-        return  heightsMap.get(max);
+        return candles;
     }
 
 }
