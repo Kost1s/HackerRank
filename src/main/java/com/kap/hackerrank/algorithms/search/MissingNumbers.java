@@ -23,61 +23,47 @@ public class MissingNumbers {
         }
         in.close();
 
-        int[] results = getMissingNumbers(arA, arB);
+        Set<Integer> results = getMissingNumbers(arA, arB);
 
-        for (int i = 0; i < results.length; i++) {
-            System.out.print(results[i] + (i != results.length - 1 ? " " : ""));
+        for (Integer result : results) {
+            System.out.print(result + " ");
         }
         System.out.println("");
+
+
     }
 
-    public static int[] getMissingNumbers(int[] arA, int[] arB) {
-        List<Integer> initialList = new ArrayList<>();
+    public static Set<Integer> getMissingNumbers(int[] arA, int[] arB) {
+        Arrays.sort(arA);
+        Arrays.sort(arB);
+        Set<Integer> results = new HashSet<>();
 
-        int countA=0;
-        for(int element : arA) {
-            if(element == 3685) {
-                countA = countA + 1;
+        int j = 0;
+        if (arA.length >= arB.length) {
+            for (int i = 0; i < arA.length; i++) {
+                if ((j < arB.length) && (arA[i] == arB[j])) {
+                    j++;
+                } else {
+                    results.add(arA[i]);
+                }
+                if ((j >= arB.length) && (arA[i] != arB[arB.length - 1])) {
+                    results.add(arA[i]);
+                }
             }
-            initialList.add(element);
-        }
-
-        int countB = 0;
-        for(int element : arB) {
-            if(element == 3685) {
-                countB = countB + 1;
-            }
-            initialList.add(element);
-        }
-
-        int count=0;
-        for(Integer element : initialList) {
-            if(element == 3685) {
-                count = count + 1;
-            }
-        }
-
-        Map<Integer, Integer> numbersFrequencies = new HashMap<>();
-        for (Integer element : initialList) {
-            if (!numbersFrequencies.containsKey(element)) {
-                numbersFrequencies.put(element, 1);
-            } else {
-                numbersFrequencies.put(element, numbersFrequencies.get(element) + 1);
+        } else {
+            for (int i = 0; i < arB.length; i++) {
+                if ((j < arA.length) && (arB[i] == arA[j])) {
+                    j++;
+                } else {
+                    results.add(arB[i]);
+                }
+                if ((j >= arA.length) && (arB[i] != arA[arA.length - 1])) {
+                    results.add(arB[i]);
+                }
             }
         }
-        return result(numbersFrequencies);
-    }
 
-
-    private static int[] result(Map<Integer, Integer> numbersFrequencies) {
-        List<Integer> result = new ArrayList<>();
-
-        for (Integer element : numbersFrequencies.keySet()) {
-            if ((numbersFrequencies.get(element) % 2) != 0) {
-                result.add(element);
-            }
-        }
-        return result.stream().mapToInt(i->i).toArray();
+        return new TreeSet<>(results);
     }
 
 }
