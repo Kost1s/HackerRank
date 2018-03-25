@@ -3,6 +3,9 @@ package com.kap.hackerrank.algorithms.search;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * @author Konstantinos Antoniou
+ */
 public class Pairs {
 
     public static void main(String[] args) {
@@ -25,15 +28,9 @@ public class Pairs {
         int result=0;
 
         Arrays.sort(ar);
-
-        int j;
         for(int i=0; i< ar.length; i++) {
-            j=ar.length-1;
-            while(j > 0) {
-                if((ar[j] - ar[i]) == k) {
-                    result+=1;
-                }
-                j--;
+            if(Arrays.binarySearch(ar, ar[i]+k) > 0) {
+                result+=1;
             }
         }
 
