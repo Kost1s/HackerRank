@@ -1,26 +1,20 @@
 package com.kap.hackerrank.algorithms.warmup;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 import static com.kap.hackerrank.util.ArrayUtils.printLongArray;
+import static com.kap.hackerrank.util.IOUtils.readLineOfStringsAndConvertToIntArrayOfGivenSize;
 
+/**
+ * @author Konstantinos Antoniou
+ */
 public class MiniMaxSum {
 
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-
-        String[] arItems = scan.nextLine().split(" ");
-
-        int[] ar = new int[5];
-        for (int i = 0; i < 5; i++) {
-            int arrItem = Integer.parseInt(arItems[i].trim());
-            ar[i] = arrItem;
-        }
+        int[] ar = readLineOfStringsAndConvertToIntArrayOfGivenSize(5);
 
         long[] results = getMiniMaxSum(ar);
         printLongArray(results);
-
     }
 
     public static long[] getMiniMaxSum(int[] ar) {
