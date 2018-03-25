@@ -4,6 +4,9 @@ import org.junit.Test;
 
 import java.util.Set;
 
+/**
+ * @author Konstantinos Antoniou
+ */
 public class MissingNumbersTest {
 
     @Test

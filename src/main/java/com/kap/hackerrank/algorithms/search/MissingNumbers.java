@@ -34,35 +34,33 @@ public class MissingNumbers {
     }
 
     public static Set<Integer> getMissingNumbers(int[] arA, int[] arB) {
-        Arrays.sort(arA);
-        Arrays.sort(arB);
+        if (arA.length >= arB.length) {
+            return getResults(arA, arB);
+        } else {
+            return getResults(arB, arA);
+        }
+    }
+
+    private static Set<Integer> getResults(int[] lArray, int[] sArray) {
         Set<Integer> results = new HashSet<>();
 
-        int j = 0;
-        if (arA.length >= arB.length) {
-            for (int i = 0; i < arA.length; i++) {
-                if ((j < arB.length) && (arA[i] == arB[j])) {
-                    j++;
-                } else {
-                    results.add(arA[i]);
-                }
-                if ((j >= arB.length) && (arA[i] != arB[arB.length - 1])) {
-                    results.add(arA[i]);
-                }
-            }
-        } else {
-            for (int i = 0; i < arB.length; i++) {
-                if ((j < arA.length) && (arB[i] == arA[j])) {
-                    j++;
-                } else {
-                    results.add(arB[i]);
-                }
-                if ((j >= arA.length) && (arB[i] != arA[arA.length - 1])) {
-                    results.add(arB[i]);
-                }
-            }
-        }
+        Arrays.sort(lArray);
+        Arrays.sort(sArray);
 
+        int j = 0;
+        if (lArray.length >= sArray.length) {
+            for (int i = 0; i < lArray.length; i++) {
+                if ((j < sArray.length) && (lArray[i] == sArray[j])) {
+                    j++;
+                } else {
+                    results.add(lArray[i]);
+                }
+                if ((j >= sArray.length) && (lArray[i] != sArray[sArray.length - 1])) {
+                    results.add(lArray[i]);
+                }
+            }
+
+        }
         return new TreeSet<>(results);
     }
 
