@@ -1,4 +1,4 @@
-package com.kap.hackerrank.algorithms.languagespecific.strings;
+package com.kap.hackerrank.languagespecific.strings;
 
 import com.kap.hackerrank.languagespecific.strings.SubstringComparisons;
 import org.junit.Test;

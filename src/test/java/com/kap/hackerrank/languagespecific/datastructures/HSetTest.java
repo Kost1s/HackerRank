@@ -1,4 +1,4 @@
-package com.kap.hackerrank.algorithms.languagespecific.datastructures;
+package com.kap.hackerrank.languagespecific.datastructures;
 
 import com.kap.hackerrank.languagespecific.datastructures.HSet;
 import org.junit.Test;

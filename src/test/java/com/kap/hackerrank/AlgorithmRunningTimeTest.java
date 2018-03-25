@@ -1,4 +1,4 @@
-package com.kap.hackerrank.algorithms;
+package com.kap.hackerrank;
 
 import com.kap.hackerrank.algorithms.sorting.AlgorithmRunningTime;
 import org.junit.Test;

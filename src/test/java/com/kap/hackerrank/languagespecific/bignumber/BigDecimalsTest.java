@@ -1,4 +1,4 @@
-package com.kap.hackerrank.algorithms.languagespecific.bignumber;
+package com.kap.hackerrank.languagespecific.bignumber;
 
 import com.kap.hackerrank.languagespecific.bignumbers.BigDecimals;
 import org.junit.Test;
