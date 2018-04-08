@@ -15,14 +15,14 @@ public class JavaList {
         List<Integer> integerList = new ArrayList<>();
 
         int listSize = sc.nextInt();
-        for(int i=0; i<listSize; i++) {
+        for (int i = 0; i < listSize; i++) {
             integerList.add(sc.nextInt());
         }
 
 
         int queriesNumber = sc.nextInt();
         sc.nextLine();
-        for (int i=0; i<queriesNumber; i++) {
+        for (int i = 0; i < queriesNumber; i++) {
             String operation = sc.nextLine();
             String[] arItems = sc.nextLine().split(" ");
 
@@ -38,11 +38,10 @@ public class JavaList {
         sc.close();
     }
 
-
     private static void updateList(List<Integer> list, String operation, int[] instructions) {
-        if("Insert".equals(operation)) {
+        if ("Insert".equals(operation)) {
             list.add(instructions[0], instructions[1]);
-        } else if("Delete".equals(operation)) {
+        } else if ("Delete".equals(operation)) {
             list.remove(instructions[0]);
         }
     }
