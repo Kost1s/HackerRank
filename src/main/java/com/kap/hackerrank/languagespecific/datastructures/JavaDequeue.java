@@ -20,6 +20,7 @@ public class JavaDequeue {
         System.out.println(getMaxUniqueIntegers(ar, subArSize));
     }
 
+    //todo fix tests for this
     public static int getMaxUniqueIntegers(int[] ar, int subArSize) {
         Deque<Integer> integerDeque = new ArrayDeque<>();
         List<Integer> uniqueElementNumbers =  new ArrayList<>();
