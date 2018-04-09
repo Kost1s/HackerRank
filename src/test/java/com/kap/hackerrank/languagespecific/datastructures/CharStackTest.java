@@ -4,6 +4,9 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertTrue;
 
+/**
+ * @author Konstantinos Antoniou
+ */
 public class CharStackTest {
 
     @Test

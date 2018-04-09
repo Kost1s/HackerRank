@@ -1,6 +1,5 @@
 package com.kap.hackerrank.languagespecific.datastructures;
 
-import com.kap.hackerrank.languagespecific.datastructures.HSet;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertTrue;

@@ -20,20 +20,21 @@ public class JavaDequeue {
         System.out.println(getMaxUniqueIntegers(ar, subArSize));
     }
 
-    //todo fix tests for this
     public static int getMaxUniqueIntegers(int[] ar, int subArSize) {
         Deque<Integer> integerDeque = new ArrayDeque<>();
         List<Integer> uniqueElementNumbers =  new ArrayList<>();
 
         for (int i = 0; i < ar.length; i++) {
+            integerDeque.clear();
             int j = 0;
             int k = i;
             while (j < subArSize) {
                 integerDeque.add(ar[k++]);
+                j++;
             }
             int uniqueElements=0;
-            for (int m = 0; m < integerDeque.size(); m++) {
-                if(integerDeque.removeFirstOccurrence(m) && (!integerDeque.removeLastOccurrence(m))) {
+            for (int m = i; (m - i) <= integerDeque.size(); m++) {
+                if(integerDeque.removeFirstOccurrence(ar[m]) && !integerDeque.removeLastOccurrence(ar[m])) {
                     ++uniqueElements;
                 }
             }
