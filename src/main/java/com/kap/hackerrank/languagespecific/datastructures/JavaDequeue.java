@@ -33,12 +33,16 @@ public class JavaDequeue {
                 j++;
             }
             int uniqueElements=0;
-            for (int m = i; (m - i) <= integerDeque.size(); m++) {
+            int dequeInitSize = integerDeque.size();
+            for (int m = i; (m - i) < dequeInitSize; m++) {
                 if(integerDeque.removeFirstOccurrence(ar[m]) && !integerDeque.removeLastOccurrence(ar[m])) {
                     ++uniqueElements;
                 }
             }
             uniqueElementNumbers.add(uniqueElements);
+            if(k == ar.length) {
+                break;
+            }
         }
 
         Collections.sort(uniqueElementNumbers);
