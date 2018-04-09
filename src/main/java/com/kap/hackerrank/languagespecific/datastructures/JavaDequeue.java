@@ -22,19 +22,20 @@ public class JavaDequeue {
 
     public static int getMaxUniqueIntegers(int[] ar, int subArSize) {
         Deque<Integer> integerDeque = new ArrayDeque<>();
-        List<Integer> uniqueElementNumbers = new ArrayList<>();
 
+        int max = 0;
         for (int i = 0; i < ar.length; i++) {
             integerDeque.offer(ar[i]);
             if (integerDeque.size() == subArSize) {
                 Set<Integer> uniqueElements = new HashSet<>(integerDeque);
-                uniqueElementNumbers.add(uniqueElements.size());
+                if (uniqueElements.size() > max) {
+                    max = uniqueElements.size();
+                }
                 integerDeque.poll();
             }
         }
 
-        Collections.sort(uniqueElementNumbers);
-        return uniqueElementNumbers.get(uniqueElementNumbers.size() - 1);
+        return max;
     }
 
 }
