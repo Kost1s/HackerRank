@@ -29,17 +29,13 @@ public class JavaDequeue {
             int j = 0;
             int k = i;
             while (j < subArSize) {
-                integerDeque.add(ar[k++]);
+                if(!integerDeque.contains(ar[k])) {
+                    integerDeque.add(ar[k]);
+                }
+                k++;
                 j++;
             }
-            int uniqueElements=0;
-            int dequeInitSize = integerDeque.size();
-            for (int m = i; (m - i) < dequeInitSize; m++) {
-                if(integerDeque.removeFirstOccurrence(ar[m]) && !integerDeque.removeLastOccurrence(ar[m])) {
-                    ++uniqueElements;
-                }
-            }
-            uniqueElementNumbers.add(uniqueElements);
+            uniqueElementNumbers.add(integerDeque.size());
             if(k == ar.length) {
                 break;
             }
