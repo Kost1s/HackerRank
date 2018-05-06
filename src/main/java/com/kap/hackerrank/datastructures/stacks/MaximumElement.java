@@ -10,22 +10,40 @@ public class MaximumElement {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Stack intStack = new Stack();
-        int max = 0;
+        Stack<StackNode> stack = new Stack<>();
+        int max = Integer.MIN_VALUE;
+        int nodeValue;
 
-        int queriesNo = Integer.parseInt(sc.nextLine());
+        int queriesNo = sc.nextInt();
         for (int i = 0; i < queriesNo; i++) {
-            String[] ar = sc.nextLine().split(" ");
-            if (("1").equals(ar[0]) && (Integer.parseInt(ar[1]) > max)) {
-                max = Integer.parseInt(ar[1]);
-                intStack.push(max);
-            } else if (("2").equals(ar[0]) && !intStack.empty()) {
-                if(intStack.pop().equals(max)) {
-                    max=0;
+            int instruction = sc.nextInt();
+            if (instruction == 1) {
+                nodeValue = sc.nextInt();
+                if (nodeValue > max) {
+                    max = nodeValue;
                 }
-            } else if (("3").equals(ar[0])) {
+                stack.push(new StackNode(nodeValue, max));
+            } else if ((instruction == 2) && !stack.empty()) {
+                stack.pop();
+                if (stack.empty()) {
+                    max = Integer.MIN_VALUE;
+                } else {
+                    max = stack.peek().currentMaxValue;
+                }
+            } else if ((instruction == 3) && !stack.empty()) {
                 System.out.println(max);
             }
+        }
+        sc.close();
+    }
+
+    private static class StackNode {
+        int value;
+        int currentMaxValue;
+
+        private StackNode(int value, int currentMaxValue) {
+            this.value = value;
+            this.currentMaxValue = currentMaxValue;
         }
     }
 
