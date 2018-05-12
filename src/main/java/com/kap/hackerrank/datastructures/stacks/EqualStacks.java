@@ -12,7 +12,7 @@ public class EqualStacks {
 
     public static void main(String[] args) {
         List<Stack<StackNode>> stacks = readStacks();
-        int height = findHeight(stacks, 0);
+        int height = findHeight(stacks);
         System.out.println(height);
     }
 
@@ -38,21 +38,14 @@ public class EqualStacks {
         return stacks;
     }
 
-    private static int findHeight(List<Stack<StackNode>> stacks, int i) {
+    private static int findHeight(List<Stack<StackNode>> stacks) {
         if (checkEmpty(stacks)) {
             return 0;
         } else if (checkEqualHeight(stacks)) {
             return stacks.get(0).peek().currentSum;
         }
-
-        if()
-        if (i == 3) {
-            i = 0;
-        } else {
-            i++;
-        }
-        stacks.get(i).pop();
-        return findHeight(stacks, i);
+        popFromHigherStack(stacks);
+        return findHeight(stacks);
     }
 
     private static boolean checkEqualHeight(List<Stack<StackNode>> stacks) {
@@ -67,6 +60,17 @@ public class EqualStacks {
             }
         }
         return false;
+    }
+
+    private static void popFromHigherStack(List<Stack<StackNode>> stacks) {
+        for (int i = 0; i < stacks.size(); i++) {
+            for(int j = 0; j < stacks.size(); j++) {
+                if(stacks.get(i).peek().currentSum > stacks.get(j).peek().currentSum) {
+                    stacks.get(i).pop();
+                    break;
+                }
+            }
+        }
     }
 
     private static class StackNode {
