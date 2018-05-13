@@ -12,8 +12,7 @@ public class EqualStacks {
 
     public static void main(String[] args) {
         List<Stack<StackNode>> stacks = readStacks();
-        int height = findHeight(stacks);
-        System.out.println(height);
+        System.out.println(findHeight(stacks));
     }
 
     private static List<Stack<StackNode>> readStacks() {
