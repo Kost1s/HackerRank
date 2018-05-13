@@ -42,15 +42,15 @@ public class EqualStacks {
         if (checkEmpty(stacks)) {
             return 0;
         } else if (checkEqualHeight(stacks)) {
-            return stacks.get(0).peek().currentSum;
+            return stacks.get(0).peek().currentHeight;
         }
         popFromHigherStack(stacks);
         return findHeight(stacks);
     }
 
     private static boolean checkEqualHeight(List<Stack<StackNode>> stacks) {
-        return (stacks.get(0).peek().currentSum == stacks.get(1).peek().currentSum) &&
-                (stacks.get(1).peek().currentSum == stacks.get(2).peek().currentSum);
+        return (stacks.get(0).peek().currentHeight == stacks.get(1).peek().currentHeight) &&
+                (stacks.get(1).peek().currentHeight == stacks.get(2).peek().currentHeight);
     }
 
     private static boolean checkEmpty(List<Stack<StackNode>> stacks) {
@@ -65,9 +65,10 @@ public class EqualStacks {
     private static void popFromHigherStack(List<Stack<StackNode>> stacks) {
         for (int i = 0; i < stacks.size(); i++) {
             for(int j = 0; j < stacks.size(); j++) {
-                if(stacks.get(i).peek().currentSum > stacks.get(j).peek().currentSum) {
+                if(stacks.get(i).peek().currentHeight > stacks.get(j).peek().currentHeight) {
                     stacks.get(i).pop();
-                    break;
+                    j = stacks.size();
+                    i = stacks.size();
                 }
             }
         }
@@ -75,11 +76,11 @@ public class EqualStacks {
 
     private static class StackNode {
         int nodeValue;
-        int currentSum;
+        int currentHeight;
 
-        private StackNode(int nodeValue, int currentSum) {
+        private StackNode(int nodeValue, int currentHeight) {
             this.nodeValue = nodeValue;
-            this.currentSum = currentSum;
+            this.currentHeight = currentHeight;
         }
     }
 
