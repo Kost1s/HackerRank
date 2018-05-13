@@ -37,7 +37,7 @@ public class EqualStacks {
         return stacks;
     }
 
-    private static int findHeight(List<Stack<StackNode>> stacks) {
+    public static int findHeight(List<Stack<StackNode>> stacks) {
         if (checkEmpty(stacks)) {
             return 0;
         } else if (checkEqualHeight(stacks)) {
@@ -73,11 +73,11 @@ public class EqualStacks {
         }
     }
 
-    private static class StackNode {
+    protected static class StackNode {
         int nodeValue;
         int currentHeight;
 
-        private StackNode(int nodeValue, int currentHeight) {
+        protected StackNode(int nodeValue, int currentHeight) {
             this.nodeValue = nodeValue;
             this.currentHeight = currentHeight;
         }
