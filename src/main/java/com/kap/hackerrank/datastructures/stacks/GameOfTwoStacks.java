@@ -12,7 +12,7 @@ public class GameOfTwoStacks {
         //print number
     }
 
-    private static  Map<Integer, List<Stack<Integer>>> readStacks() {
+    private static Map<Integer, List<Stack<Integer>>> readStacks() {
         Scanner sc = new Scanner(System.in);
         Map<Integer, List<Stack<Integer>>> stacksMap = new HashMap<>();
         List<Stack<Integer>> stacks = new ArrayList<>();
