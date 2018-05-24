@@ -8,8 +8,7 @@ import java.util.*;
 public class GameOfTwoStacks {
 
     public static void main(String[] args) {
-        Map<Integer, List<Stack<Integer>>> stacks = readStacks();
-        //print number
+        readStacks();
     }
 
     private static Map<Integer, List<Stack<Integer>>> readStacks() {
@@ -34,8 +33,41 @@ public class GameOfTwoStacks {
                 }
             }
             stacksMap.put(sumLimit, stacks);
+            System.out.println(findMaxNoOfMoves(stacksMap));
         }
         return stacksMap;
     }
 
+    private static int findMaxNoOfMoves(Map<Integer, List<Stack<Integer>>> stacksMap) {
+        int intLimit = 0;
+        int runningSum = 0;
+        int maxNoOfMoves = 0;
+
+        Stack<Integer> stackOne = new Stack<>();
+        Stack<Integer> stackTwo = new Stack<>();
+
+        for (Map.Entry<Integer, List<Stack<Integer>>> entry : stacksMap.entrySet()) {
+            intLimit = entry.getKey();
+            stackOne = entry.getValue().get(0);
+            stackTwo = entry.getValue().get(1);
+        }
+
+        return maxNoOfMoves(stackOne, stackTwo, runningSum, intLimit, maxNoOfMoves);
+    }
+
+    private static int maxNoOfMoves(Stack<Integer> stackOne, Stack<Integer> stackTwo, int runningSum, int intLimit,
+                                    int maxNoOfMoves) {
+
+        if ((stackOne.peek() < stackTwo.peek()) && ((runningSum + stackOne.peek()) < intLimit)) {
+            runningSum += stackOne.pop();
+            maxNoOfMoves++;
+            return maxNoOfMoves(stackOne, stackTwo, runningSum, intLimit, maxNoOfMoves);
+        } else if ((stackOne.peek() > stackTwo.peek()) && ((runningSum + stackTwo.peek()) < intLimit)) {
+            runningSum += stackTwo.pop();
+            maxNoOfMoves++;
+            return maxNoOfMoves(stackOne, stackTwo, runningSum, intLimit, maxNoOfMoves);
+        } else {
+            return maxNoOfMoves;
+        }
+    }
 }
