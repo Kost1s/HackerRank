@@ -41,129 +41,52 @@ public class GameOfTwoStacks {
     }
 
     private static int findMaxNoOfMoves(Map<Integer, List<Stack<Integer>>> stacksMap) {
-        int intLimit = 0;
-        int runningSum = 0;
-        int maxNoOfMoves = 0;
-
+        int limit = 0;
         Stack<Integer> stackOne = new Stack<>();
         Stack<Integer> stackTwo = new Stack<>();
 
         for (Map.Entry<Integer, List<Stack<Integer>>> entry : stacksMap.entrySet()) {
-            intLimit = entry.getKey();
+            limit = entry.getKey();
             stackOne = entry.getValue().get(0);
             stackTwo = entry.getValue().get(1);
         }
 
-        return maxNoOfMoves(stackOne, stackTwo, runningSum, intLimit, maxNoOfMoves);
+        return maxNoOfMoves(stackOne, stackTwo, limit);
     }
 
 
-    private static int maxNoOfMoves(Stack<Integer> stackOne, Stack<Integer> stackTwo, int runningSum, int intLimit,
-                                    int maxNoOfMoves) {
-
+    private static int maxNoOfMoves(Stack<Integer> stackOne, Stack<Integer> stackTwo, int limit) {
         Stack<Integer> stackOneHelper = new Stack<>();
-        Stack<Integer> stackTwoHelper = new Stack<>();
 
         int stackOneMoves = 0;
-        int stackOneRunningSum = 0;
+        int runningSum = 0;
         int stackOneElement;
-        while (!stackOne.isEmpty() && ((stackOneRunningSum + stackOne.peek()) <= intLimit)) {
+        while (!stackOne.isEmpty() && ((runningSum + stackOne.peek()) <= limit)) {
             stackOneElement = stackOne.pop();
             stackOneHelper.push(stackOneElement);
-            stackOneRunningSum += stackOneElement;
+            runningSum += stackOneElement;
             stackOneMoves++;
         }
 
+        int maxMoves = stackOneMoves;
+
         int stackTwoMoves = 0;
-        int stackTwoRunningSum = 0;
-        int stackTwoElement;
-        while (!stackTwo.isEmpty() && ((stackTwoRunningSum + stackTwo.peek()) <= intLimit)) {
-            stackTwoElement = stackTwo.pop();
-            stackTwoHelper.push(stackTwoElement);
-            stackTwoRunningSum += stackTwoElement;
+        while (!stackTwo.isEmpty()) {
+            runningSum += stackTwo.pop();
             stackTwoMoves++;
-        }
 
-        while (!stackOneHelper.isEmpty()) {
-            stackOne.push(stackOneHelper.pop());
-        }
-
-        while (!stackTwoHelper.isEmpty()) {
-            stackTwo.push(stackTwoHelper.pop());
-        }
-
-        int stackAtoBMoves = 0;
-        int stackAtoBRunningSum = 0;
-        while (!stackOne.isEmpty() && ((stackAtoBRunningSum + stackOne.peek()) <= intLimit)) {
-            stackOneElement = stackOne.pop();
-            stackOneHelper.push(stackOneElement);
-            stackAtoBRunningSum += stackOneElement;
-            stackAtoBMoves++;
-        }
-
-        while (!stackTwo.isEmpty() && ((stackAtoBRunningSum + stackTwo.peek()) <= intLimit)) {
-            stackTwoElement = stackTwo.pop();
-            stackTwoHelper.push(stackTwoElement);
-            stackAtoBRunningSum += stackTwoElement;
-            stackAtoBMoves++;
-        }
-
-
-        while (!stackOneHelper.isEmpty()) {
-            stackOne.push(stackOneHelper.pop());
-        }
-
-        while (!stackTwoHelper.isEmpty()) {
-            stackTwo.push(stackTwoHelper.pop());
-        }
-
-        int stackBtoAMoves = 0;
-        int stackBtoARunningSum = 0;
-        while (!stackTwo.isEmpty() && ((stackBtoARunningSum + stackTwo.peek()) <= intLimit)) {
-            stackTwoElement = stackTwo.pop();
-            stackTwoHelper.push(stackTwoElement);
-            stackBtoARunningSum += stackTwoElement;
-            stackBtoAMoves++;
-        }
-
-        while (!stackOne.isEmpty() && ((stackBtoARunningSum + stackOne.peek()) <= intLimit)) {
-            stackOneElement = stackOne.pop();
-            stackOneHelper.push(stackOneElement);
-            stackBtoARunningSum += stackOneElement;
-            stackBtoAMoves++;
-        }
-
-        while (!stackOneHelper.isEmpty()) {
-            stackOne.push(stackOneHelper.pop());
-        }
-
-        while (!stackTwoHelper.isEmpty()) {
-            stackTwo.push(stackTwoHelper.pop());
-        }
-
-        // need to be written here
-        int smallestElementMoves = smallestElementMethod(stackOne, stackTwo, intLimit, 0, 0);
-
-        int[] maxMoves = {stackOneMoves, stackTwoMoves, stackAtoBMoves, stackBtoAMoves, smallestElementMoves};
-        Arrays.sort(maxMoves);
-
-        return maxMoves[maxMoves.length - 1];
-    }
-
-    private static int smallestElementMethod(Stack<Integer> stackOne, Stack<Integer> stackTwo, int intLimit,
-                                             int runningSum, int maxNoOfMoves) {
-        if(!stackOne.isEmpty() && !stackTwo.isEmpty()) {
-            if ((stackOne.peek() < stackTwo.peek()) && ((runningSum + stackOne.peek()) <= intLimit)) {
-                runningSum += stackOne.pop();
-                maxNoOfMoves++;
-                return smallestElementMethod(stackOne, stackTwo, intLimit, runningSum, maxNoOfMoves);
-            } else if ((stackOne.peek() > stackTwo.peek()) && ((runningSum + stackTwo.peek()) <= intLimit)) {
-                runningSum += stackTwo.pop();
-                maxNoOfMoves++;
-                return smallestElementMethod(stackOne, stackTwo, intLimit, runningSum, maxNoOfMoves);
+            while ((runningSum > limit) && !stackOneHelper.isEmpty()) {
+                runningSum -= stackOneHelper.pop();
+                stackOneMoves--;
             }
+
+            if (((stackOneMoves + stackTwoMoves) > maxMoves) && (runningSum <= limit)) {
+                maxMoves = stackOneMoves + stackTwoMoves;
+            }
+
         }
-        return maxNoOfMoves;
+
+        return maxMoves;
     }
 
 }
