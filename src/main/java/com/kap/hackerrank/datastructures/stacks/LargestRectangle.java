@@ -25,8 +25,7 @@ public class LargestRectangle {
             currentHeight = sc.nextInt();
 
             if ((hStack.isEmpty()) || (!hStack.isEmpty() && (currentHeight >= hStack.peek()))) {
-                hStack.push(currentHeight);
-                pStack.push(position);
+                pushToStacks(pStack, hStack, position, currentHeight);
                 position++;
             }
 
@@ -34,12 +33,9 @@ public class LargestRectangle {
                 while (!hStack.isEmpty() && (currentHeight < hStack.peek())) {
                     lastPosition = pStack.pop();
                     height = hStack.pop() * (position - lastPosition);
-                    if (height > maxHeight) {
-                        maxHeight = height;
-                    }
+                    maxHeight = getMaxHeight(height, maxHeight);
                 }
-                hStack.push(currentHeight);
-                pStack.push(lastPosition);
+                pushToStacks(pStack, hStack, lastPosition, currentHeight);
                 position++;
             }
 
@@ -47,12 +43,22 @@ public class LargestRectangle {
 
         while(!hStack.isEmpty()) {
             height = hStack.pop() * (position - pStack.pop());
-            if (height > maxHeight) {
-                maxHeight = height;
-            }
+            maxHeight = getMaxHeight(height, maxHeight);
         }
 
         System.out.println(maxHeight);
+    }
+
+    private static int getMaxHeight(int height, int maxHeight) {
+        if (height > maxHeight) {
+            return height;
+        }
+        return maxHeight;
+    }
+
+    private static void pushToStacks(Stack<Integer> pStack, Stack<Integer> hStack, int position, int currentHeight) {
+        hStack.push(currentHeight);
+        pStack.push(position);
     }
 
 }
