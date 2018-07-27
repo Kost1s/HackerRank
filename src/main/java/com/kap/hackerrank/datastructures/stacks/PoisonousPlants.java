@@ -1,7 +1,8 @@
 package com.kap.hackerrank.datastructures.stacks;
 
-import java.util.Scanner;
 import java.util.Stack;
+
+import static com.kap.hackerrank.util.IOUtils.readSizeAndElementsOfIntArray;
 
 /**
  * @author Konstantinos Antoniou
@@ -9,45 +10,48 @@ import java.util.Stack;
 public class PoisonousPlants {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        Stack<Integer> s1 = new Stack<>();
-        int stackSize = sc.nextInt();
-        for (int i = 0; i < stackSize; i++) {
-            s1.push(sc.nextInt());
-        }
-
-        Stack<Integer> s2 = new Stack<>();
-        int d = 0;
-        int days = countDays(s1, s2, d);
-
-        System.out.println(days);
+        int[] ar = readSizeAndElementsOfIntArray();
+        System.out.println(countDays(ar));
     }
 
-    public static int countDays(Stack<Integer> s1, Stack<Integer> s2, int days) {
-        boolean plantsDied = false;
+    public static int countDays(int[] ar) {
+        Stack<Integer> s1 = new Stack<>();
+        Stack<Integer> s2 = new Stack<>();
 
-        while (!s1.isEmpty()) {
-            if (!s2.isEmpty() && (s1.peek() < s2.peek())) {
-                plantsDied = true;
-                s2.pop();
+        int days = 0;
+        int dMax = 0;
+        boolean firstTime = true;
+        for (int i = 0; i < ar.length; i++) {
+            if (!s1.isEmpty() && (ar[i] > s1.peek())) {
+                if(s2.isEmpty() && firstTime) {
+                    days++;
+                    firstTime = false;
+                }
+                if(!s2.isEmpty() && (ar[i] <= s2.peek())) {
+                    days++;
+                }
+                s2.push(ar[i]);
+                dMax = getMaxDays(days, dMax);
             }
-            s2.push(s1.pop());
+
+            if(!s1.isEmpty() && (ar[i] <= s1.peek())) {
+                dMax = getMaxDays(days, dMax);
+                days = 0;
+                s1.push(ar[i]);
+            }
+
+            if(s1.isEmpty()) {
+                s1.push(ar[i]);
+            }
         }
 
-        if (!plantsDied) {
+        return dMax;
+    }
+
+    private static int getMaxDays(int days, int max) {
+        if (days > max) {
             return days;
         }
-
-        rechargeStackOne(s1, s2);
-        days++;
-
-        return countDays(s1, s2, days);
-    }
-
-    private static void rechargeStackOne(Stack<Integer> s1, Stack<Integer> s2) {
-        while(!s2.isEmpty()) {
-            s1.push(s2.pop());
-        }
+        return max;
     }
 }
