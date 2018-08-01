@@ -1,5 +1,6 @@
 package com.kap.hackerrank.datastructures.stacks;
 
+import java.util.Scanner;
 import java.util.Stack;
 
 import static com.kap.hackerrank.util.IOUtils.readSizeAndElementsOfIntArray;
@@ -10,41 +11,36 @@ import static com.kap.hackerrank.util.IOUtils.readSizeAndElementsOfIntArray;
 public class PoisonousPlants {
 
     public static void main(String[] args) {
-        int[] ar = readSizeAndElementsOfIntArray();
-        System.out.println(countDays(ar));
-    }
+        Scanner sc = new Scanner(System.in);
+        Stack<Integer> stack = new Stack<>();
 
-    public static int countDays(int[] ar) {
-        Stack<Integer> s1 = new Stack<>();
-        Stack<Integer> s2 = new Stack<>();
-
-        int days = 0;
-        int dMax = 0;
-        boolean firstTime = true;
-        for (int i = 0; i < ar.length; i++) {
-            if (!s1.isEmpty() && (ar[i] > s1.peek())) {
-                if(s2.isEmpty() && firstTime) {
-                    days++;
-                    firstTime = false;
-                }
-                if(!s2.isEmpty() && (ar[i] <= s2.peek())) {
-                    days++;
-                }
-                s2.push(ar[i]);
-                dMax = getMaxDays(days, dMax);
-            }
-
-            if(!s1.isEmpty() && (ar[i] <= s1.peek())) {
-                dMax = getMaxDays(days, dMax);
-                days = 0;
-                s1.push(ar[i]);
-            }
-
-            if(s1.isEmpty()) {
-                s1.push(ar[i]);
-            }
+        int size = sc.nextInt();
+        for(int i =0; i< size; i++) {
+            stack.push(sc.nextInt());
         }
 
+        System.out.println(countDays(stack));
+    }
+
+    public static int countDays(Stack<Integer> baseStack) {
+        Stack<Integer> auxStack = new Stack<>();
+
+        int dMax = 0;
+        int days = 0;
+        while(!baseStack.isEmpty()) {
+            if(!auxStack.isEmpty()) {
+                if(baseStack.peek() >= auxStack.peek()) {
+                    dMax = getMaxDays(days, dMax);
+                    days = 0;
+                } else {
+                    while(!baseStack.isEmpty() && !auxStack.isEmpty() && (baseStack.peek() < auxStack.peek())) {
+                        days++;
+                        auxStack.pop();
+                    }
+                }
+            }
+            auxStack.push(baseStack.pop());
+        }
         return dMax;
     }
 
