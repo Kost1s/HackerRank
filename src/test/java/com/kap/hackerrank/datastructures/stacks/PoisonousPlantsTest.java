@@ -16,6 +16,8 @@ public class PoisonousPlantsTest {
     private Stack<Integer> stackTestTwo;
     private Stack<Integer> stackTestThree;
     private Stack<Integer> stackTestFour;
+    private Stack<Integer> stackTestFive;
+    private Stack<Integer> stackTestSix;
 
     @Before
     public void setUp() {
@@ -68,6 +70,21 @@ public class PoisonousPlantsTest {
         stackTestFour.push(4);
         stackTestFour.push(3);
         stackTestFour.push(3);
+
+        stackTestFive = new Stack<>();
+        stackTestFive.push(1);
+        stackTestFive.push(2);
+        stackTestFive.push(3);
+        stackTestFive.push(4);
+        stackTestFive.push(5);
+
+        stackTestSix = new Stack<>();
+        stackTestSix.push(1);
+        stackTestSix.push(6);
+        stackTestSix.push(6);
+        stackTestSix.push(6);
+        stackTestSix.push(6);
+        stackTestSix.push(6);
     }
 
 
@@ -93,5 +110,17 @@ public class PoisonousPlantsTest {
     public void noPlantsDieAfterDayThreeAgain() {
         int days = PoisonousPlants.countDays(stackTestFour);
         assertEquals(3, days);
+    }
+
+    @Test
+    public void noPlantDieAfterDayOne() {
+        int days = PoisonousPlants.countDays(stackTestFive);
+        assertEquals(1, days);
+    }
+
+    @Test
+    public void noPlsntsDieAfterDayFive() {
+        int days = PoisonousPlants.countDays(stackTestSix);
+        assertEquals(5, days);
     }
 }

@@ -3,8 +3,6 @@ package com.kap.hackerrank.datastructures.stacks;
 import java.util.Scanner;
 import java.util.Stack;
 
-import static com.kap.hackerrank.util.IOUtils.readSizeAndElementsOfIntArray;
-
 /**
  * @author Konstantinos Antoniou
  */
@@ -52,6 +50,7 @@ public class PoisonousPlants {
                 normalStack.push(baseStack.pop());
             }
         }
+        dMax = getMaxDays(days, dMax);
         return dMax;
     }
 
