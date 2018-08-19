@@ -12,8 +12,10 @@ import static org.junit.Assert.assertEquals;
  */
 public class PoisonousPlantsTest {
 
-    Stack<Integer> stackTestOne;
-    Stack<Integer> stackTestTwo;
+    private Stack<Integer> stackTestOne;
+    private Stack<Integer> stackTestTwo;
+    private Stack<Integer> stackTestThree;
+    private Stack<Integer> stackTestFour;
 
     @Before
     public void setUp() {
@@ -35,32 +37,61 @@ public class PoisonousPlantsTest {
         stackTestTwo.push(5);
         stackTestTwo.push(6);
         stackTestTwo.push(6);
+
+        stackTestThree = new Stack<>();
+        stackTestThree.push(20);
+        stackTestThree.push(5);
+        stackTestThree.push(6);
+        stackTestThree.push(15);
+        stackTestThree.push(2);
+        stackTestThree.push(2);
+        stackTestThree.push(17);
+        stackTestThree.push(2);
+        stackTestThree.push(11);
+        stackTestThree.push(5);
+        stackTestThree.push(14);
+        stackTestThree.push(5);
+        stackTestThree.push(10);
+        stackTestThree.push(9);
+        stackTestThree.push(19);
+        stackTestThree.push(12);
+        stackTestThree.push(5);
+
+        stackTestFour = new Stack<>();
+        stackTestFour.push(2);
+        stackTestFour.push(1);
+        stackTestFour.push(3);
+        stackTestFour.push(1);
+        stackTestFour.push(4);
+        stackTestFour.push(2);
+        stackTestFour.push(1);
+        stackTestFour.push(4);
+        stackTestFour.push(3);
+        stackTestFour.push(3);
     }
 
 
     @Test
     public void noPlantsDieAfterDayTwo() {
-        int days = PoisonousPlants.countDays(stackTestOne);
+        int days = PoisonousPlants.countDays(stackTestOne, 0);
         assertEquals(2, days);
     }
 
     @Test
     public void noPlantsDieAfterDayThree() {
-        int days = PoisonousPlants.countDays(stackTestTwo);
+        int days = PoisonousPlants.countDays(stackTestTwo, 0);
         assertEquals(3, days);
     }
 
-/*    @Test
+    @Test
     public void noPlantsDieAfterDayFour() {
-        int[] ar = {20, 5, 6, 15, 2, 2, 17, 2, 11, 5, 14, 5, 10, 9, 19, 12, 5};
-        int days = PoisonousPlants.countDays(ar);
+        int days = PoisonousPlants.countDays(stackTestThree, 0);
         assertEquals(4, days);
     }
 
     @Test
     public void noPlantsDieAfterDayThreeAgain() {
-        int[] ar = {2, 1, 3, 1, 4, 2, 1, 4, 3, 3};
-        int days = PoisonousPlants.countDays(ar);
+        int days = PoisonousPlants.countDays(stackTestFour, 0);
         assertEquals(3, days);
-    }*/
+    }
 }
