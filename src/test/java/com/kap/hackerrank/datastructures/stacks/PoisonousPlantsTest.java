@@ -100,7 +100,6 @@ public class PoisonousPlantsTest {
 
     }
 
-
     @Test
     public void noPlantsDieAfterDayTwo() {
         int days = PoisonousPlants.countDays(stackTestOne);
