@@ -73,25 +73,25 @@ public class PoisonousPlantsTest {
 
     @Test
     public void noPlantsDieAfterDayTwo() {
-        int days = PoisonousPlants.countDays(stackTestOne, 0);
+        int days = PoisonousPlants.countDays(stackTestOne);
         assertEquals(2, days);
     }
 
     @Test
     public void noPlantsDieAfterDayThree() {
-        int days = PoisonousPlants.countDays(stackTestTwo, 0);
+        int days = PoisonousPlants.countDays(stackTestTwo);
         assertEquals(3, days);
     }
 
     @Test
     public void noPlantsDieAfterDayFour() {
-        int days = PoisonousPlants.countDays(stackTestThree, 0);
+        int days = PoisonousPlants.countDays(stackTestThree);
         assertEquals(4, days);
     }
 
     @Test
     public void noPlantsDieAfterDayThreeAgain() {
-        int days = PoisonousPlants.countDays(stackTestFour, 0);
+        int days = PoisonousPlants.countDays(stackTestFour);
         assertEquals(3, days);
     }
 }

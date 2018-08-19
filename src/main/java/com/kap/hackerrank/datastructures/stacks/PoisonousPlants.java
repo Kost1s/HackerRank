@@ -15,7 +15,7 @@ public class PoisonousPlants {
         Stack<Integer> stack = new Stack<>();
 
         int size = sc.nextInt();
-        for(int i =0; i< size; i++) {
+        for (int i = 0; i < size; i++) {
             stack.push(sc.nextInt());
         }
 
@@ -23,23 +23,34 @@ public class PoisonousPlants {
     }
 
     public static int countDays(Stack<Integer> baseStack) {
-        Stack<Integer> auxStack = new Stack<>();
+        Stack<Integer> normalStack = new Stack<>();
+        Stack<Integer> additiveStack = new Stack<>();
 
         int dMax = 0;
         int days = 0;
-        while(!baseStack.isEmpty()) {
-            if(!auxStack.isEmpty()) {
-                if(baseStack.peek() >= auxStack.peek()) {
-                    dMax = getMaxDays(days, dMax);
-                    days = 0;
-                } else {
-                    while(!baseStack.isEmpty() && !auxStack.isEmpty() && (baseStack.peek() < auxStack.peek())) {
-                        days++;
-                        auxStack.pop();
-                    }
+
+        while (!baseStack.isEmpty()) {
+            if (!normalStack.isEmpty() && (baseStack.peek() >= normalStack.peek())) {
+                dMax = getMaxDays(days, dMax);
+                days = 0;
+                additiveStack.push(normalStack.pop());
+            }
+            if (!normalStack.isEmpty() && (baseStack.peek() < normalStack.peek())) {
+                while (!baseStack.isEmpty() && !normalStack.isEmpty() && (baseStack.peek() < normalStack.peek())) {
+                    normalStack.pop();
+                    normalStack.push(baseStack.pop());
+                }
+                days++;
+            }
+            if (!normalStack.isEmpty() && !additiveStack.isEmpty() && (normalStack.peek() < additiveStack.peek())) {
+                while (!normalStack.isEmpty() && !additiveStack.isEmpty() && (normalStack.peek() < additiveStack.peek())) {
+                    additiveStack.pop();
+                    days++;
                 }
             }
-            auxStack.push(baseStack.pop());
+            if (normalStack.isEmpty()) {
+                normalStack.push(baseStack.pop());
+            }
         }
         return dMax;
     }
