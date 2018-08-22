@@ -21,26 +21,30 @@ public class PoisonousPlants {
     }
 
     public static int countDays(Stack<Integer> baseStack) {
-        Stack<Integer> auxStack = new Stack<>();
+        Stack<Node> auxStack = new Stack<>();
 
         int dMax = 0;
         int days;
         while (!baseStack.isEmpty()) {
             days = 0;
-            while (!auxStack.isEmpty() && (baseStack.peek() < auxStack.peek())) {
+            while (!auxStack.isEmpty() && (baseStack.peek() < auxStack.peek().value)) {
                 days++;
-                auxStack.pop();
+                Node node = auxStack.pop();
+                days = Math.max(days, node.daysPassed);
             }
-            dMax = getMaxDays(days, dMax);
-            auxStack.push(baseStack.pop());
+            auxStack.push(new Node(days, baseStack.pop()));
+            dMax = Math.max(days, dMax);
         }
         return dMax;
     }
 
-    private static int getMaxDays(int days, int max) {
-        if (days > max) {
-            return days;
+    private static class Node {
+        int daysPassed;
+        int value;
+
+        public Node(int days, int val) {
+            daysPassed = days;
+            value = val;
         }
-        return max;
     }
 }
