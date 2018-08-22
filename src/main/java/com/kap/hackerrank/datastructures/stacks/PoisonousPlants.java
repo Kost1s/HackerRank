@@ -21,36 +21,19 @@ public class PoisonousPlants {
     }
 
     public static int countDays(Stack<Integer> baseStack) {
-        Stack<Integer> normalStack = new Stack<>();
-        Stack<Integer> additiveStack = new Stack<>();
+        Stack<Integer> auxStack = new Stack<>();
 
         int dMax = 0;
-        int days = 0;
-
+        int days;
         while (!baseStack.isEmpty()) {
-            if (!normalStack.isEmpty() && (baseStack.peek() >= normalStack.peek())) {
-                dMax = getMaxDays(days, dMax);
-                days = 0;
-                additiveStack.push(normalStack.pop());
-            }
-            if (!normalStack.isEmpty() && (baseStack.peek() < normalStack.peek())) {
-                while (!baseStack.isEmpty() && !normalStack.isEmpty() && (baseStack.peek() < normalStack.peek())) {
-                    normalStack.pop();
-                    normalStack.push(baseStack.pop());
-                }
+            days = 0;
+            while (!auxStack.isEmpty() && (baseStack.peek() < auxStack.peek())) {
                 days++;
+                auxStack.pop();
             }
-            if (!normalStack.isEmpty() && !additiveStack.isEmpty() && (normalStack.peek() < additiveStack.peek())) {
-                while (!normalStack.isEmpty() && !additiveStack.isEmpty() && (normalStack.peek() < additiveStack.peek())) {
-                    additiveStack.pop();
-                    days++;
-                }
-            }
-            if (normalStack.isEmpty()) {
-                normalStack.push(baseStack.pop());
-            }
+            dMax = getMaxDays(days, dMax);
+            auxStack.push(baseStack.pop());
         }
-        dMax = getMaxDays(days, dMax);
         return dMax;
     }
 
