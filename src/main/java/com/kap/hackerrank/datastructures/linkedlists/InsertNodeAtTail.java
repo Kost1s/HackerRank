@@ -49,7 +49,7 @@ public class InsertNodeAtTail {
         }
 
         interimNode = head.next;
-        while (interimNode != null && !interimNode.equals(tail)) {
+        while ((interimNode != null) && !interimNode.equals(tail)) {
             if (interimNode.next == null) {
                 interimNode.next = tail;
             }
