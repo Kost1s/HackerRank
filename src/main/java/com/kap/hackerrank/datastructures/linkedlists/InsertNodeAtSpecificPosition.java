@@ -50,8 +50,8 @@ public class InsertNodeAtSpecificPosition {
             return head;
         }
 
-        int i = 1;
-        SinglyLinkedListNode interimNode = head.next;
+        int i = 0;
+        SinglyLinkedListNode interimNode = head;
         while(i <= (position - 1)) {
             if(i == (position - 1)) {
                 node.next = interimNode.next;
