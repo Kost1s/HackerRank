@@ -8,9 +8,9 @@ import java.util.Map;
  */
 public class VolumeByField<K, V> {
 
-    private Map<K, V> volumeByFieldMap = new HashMap<>();
+    private Map<K, V> entries = new HashMap<>();
 
-    public Map<K, V> getVolumeByFieldMap() {
-        return volumeByFieldMap;
+    public Map<K, V> getEntries() {
+        return entries;
     }
 }

@@ -68,38 +68,38 @@ public class Test {
     public void testXX() {
         exchangeVolume = new VolumeByField<String, VolumeByField>();
         for(Row row : rowsList) {
-            if(!exchangeVolume.getVolumeByFieldMap().containsKey(row.getExchange())) {
+            if(!exchangeVolume.getEntries().containsKey(row.getExchange())) {
                 marketVolume = new VolumeByField<String, VolumeByField>();
             } else {
-                marketVolume = (VolumeByField) exchangeVolume.getVolumeByFieldMap().get(row.getExchange());
+                marketVolume = (VolumeByField) exchangeVolume.getEntries().get(row.getExchange());
             }
 
-            exchangeVolume.getVolumeByFieldMap().put(row.getExchange(), marketVolume);
+            exchangeVolume.getEntries().put(row.getExchange(), marketVolume);
 
-            if(!marketVolume.getVolumeByFieldMap().containsKey(row.getMarket())) {
+            if(!marketVolume.getEntries().containsKey(row.getMarket())) {
                 contractTypeVolume = new VolumeByField<String, VolumeByField>();
             } else {
-                contractTypeVolume = (VolumeByField) marketVolume.getVolumeByFieldMap().get(row.getMarket());
+                contractTypeVolume = (VolumeByField) marketVolume.getEntries().get(row.getMarket());
             }
 
-            marketVolume.getVolumeByFieldMap().put(row.getMarket(), contractTypeVolume);
+            marketVolume.getEntries().put(row.getMarket(), contractTypeVolume);
 
-            if(!contractTypeVolume.getVolumeByFieldMap().containsKey(row.getContractType())) {
+            if(!contractTypeVolume.getEntries().containsKey(row.getContractType())) {
                 executionTypeVolume = new VolumeByField<String, Integer>();
             } else {
-                executionTypeVolume = (VolumeByField) contractTypeVolume.getVolumeByFieldMap().get(row.getExecutionType());
+                executionTypeVolume = (VolumeByField) contractTypeVolume.getEntries().get(row.getExecutionType());
             }
 
-            contractTypeVolume.getVolumeByFieldMap().put(row.getContractType(), executionTypeVolume);
+            contractTypeVolume.getEntries().put(row.getContractType(), executionTypeVolume);
 
             int volume;
-            if(!executionTypeVolume.getVolumeByFieldMap().containsKey(row.getExecutionType())) {
+            if(!executionTypeVolume.getEntries().containsKey(row.getExecutionType())) {
                 volume = row.getVolume();
             } else {
-                volume = (int) executionTypeVolume.getVolumeByFieldMap().get(row.getExecutionType());
+                volume = (int) executionTypeVolume.getEntries().get(row.getExecutionType());
             }
 
-            executionTypeVolume.getVolumeByFieldMap().put(row.getExecutionType(), volume);
+            executionTypeVolume.getEntries().put(row.getExecutionType(), volume);
         }
 
     }
