@@ -16,10 +16,10 @@ public class Test {
 
     private List<Row> rowsList;
 
-    private VolumeByField exchangeVolume;
-    private VolumeByField marketVolume;
-    private VolumeByField contractTypeVolume;
-    private VolumeByField executionTypeVolume;
+    private VolumeByField<String, VolumeByField<String, VolumeByField<String, VolumeByField<String, Integer>>>> exchangeVolume;
+    private VolumeByField<String, VolumeByField<String, VolumeByField<String, Integer>>> marketVolume;
+    private VolumeByField<String, VolumeByField<String, Integer>> contractTypeVolume;
+    private VolumeByField<String, Integer> executionTypeVolume;
 
     public void fillRows() {
         rowOne = new Row();
@@ -66,28 +66,28 @@ public class Test {
     }
 
     public void testXX() {
-        exchangeVolume = new VolumeByField<String, VolumeByField>();
+        exchangeVolume = new VolumeByField<>();
         for(Row row : rowsList) {
             if(!exchangeVolume.getEntries().containsKey(row.getExchange())) {
-                marketVolume = new VolumeByField<String, VolumeByField>();
+                marketVolume = new VolumeByField<>();
             } else {
-                marketVolume = (VolumeByField) exchangeVolume.getEntries().get(row.getExchange());
+                marketVolume = exchangeVolume.getEntries().get(row.getExchange());
             }
 
             exchangeVolume.getEntries().put(row.getExchange(), marketVolume);
 
             if(!marketVolume.getEntries().containsKey(row.getMarket())) {
-                contractTypeVolume = new VolumeByField<String, VolumeByField>();
+                contractTypeVolume = new VolumeByField<>();
             } else {
-                contractTypeVolume = (VolumeByField) marketVolume.getEntries().get(row.getMarket());
+                contractTypeVolume = marketVolume.getEntries().get(row.getMarket());
             }
 
             marketVolume.getEntries().put(row.getMarket(), contractTypeVolume);
 
             if(!contractTypeVolume.getEntries().containsKey(row.getContractType())) {
-                executionTypeVolume = new VolumeByField<String, Integer>();
+                executionTypeVolume = new VolumeByField<>();
             } else {
-                executionTypeVolume = (VolumeByField) contractTypeVolume.getEntries().get(row.getExecutionType());
+                executionTypeVolume = contractTypeVolume.getEntries().get(row.getExecutionType());
             }
 
             contractTypeVolume.getEntries().put(row.getContractType(), executionTypeVolume);
@@ -96,7 +96,7 @@ public class Test {
             if(!executionTypeVolume.getEntries().containsKey(row.getExecutionType())) {
                 volume = row.getVolume();
             } else {
-                volume = (int) executionTypeVolume.getEntries().get(row.getExecutionType());
+                volume = executionTypeVolume.getEntries().get(row.getExecutionType());
             }
 
             executionTypeVolume.getEntries().put(row.getExecutionType(), volume);
