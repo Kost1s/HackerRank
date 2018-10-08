@@ -7,13 +7,6 @@ import java.util.List;
  * @author Konstantinos Antoniou
  */
 public class Test {
-
-    private Row rowOne;
-    private Row rowTwo;
-    private Row rowThree;
-    private Row rowFour;
-    private Row rowFive;
-
     private List<Row> rowsList;
 
     private VolumeByField<String, VolumeByField<String, VolumeByField<String, VolumeByField<String, Integer>>>> exchangeVolume;
@@ -22,6 +15,16 @@ public class Test {
     private VolumeByField<String, Integer> executionTypeVolume;
 
     public void fillRows() {
+        Row rowOne;
+        Row rowTwo;
+        Row rowThree;
+        Row rowFour;
+        Row rowFive;
+
+        Row rowSix;
+        Row rowSeven;
+        Row rowEight;
+
         rowOne = new Row();
         rowOne.setExchange("CME");
         rowOne.setMarket("6B");
@@ -43,12 +46,33 @@ public class Test {
         rowThree.setExecutionType("Traded Volume");
         rowThree.setVolume(14);
 
+        rowSix = new Row();
+        rowSix.setExchange("CME");
+        rowSix.setMarket("6A");
+        rowSix.setContractType("FUT");
+        rowSix.setExecutionType("Future Delivery");
+        rowSix.setVolume(5);
+
         rowFour = new Row();
         rowFour.setExchange("CME");
         rowFour.setMarket("ES");
         rowFour.setContractType("OP");
         rowFour.setExecutionType("Traded Volume");
         rowFour.setVolume(16);
+
+        rowSeven = new Row();
+        rowSeven.setExchange("CME");
+        rowSeven.setMarket("ES");
+        rowSeven.setContractType("OP");
+        rowSeven.setExecutionType("Expired Volume");
+        rowSeven.setVolume(6);
+
+        rowEight = new Row();
+        rowEight.setExchange("CME");
+        rowEight.setMarket("ES");
+        rowEight.setContractType("OP");
+        rowEight.setExecutionType("Assignments");
+        rowEight.setVolume(8);
 
         rowFive = new Row();
         rowFive.setExchange("CME");
@@ -63,12 +87,15 @@ public class Test {
         rowsList.add(rowThree);
         rowsList.add(rowFour);
         rowsList.add(rowFive);
+        rowsList.add(rowSix);
+        rowsList.add(rowSeven);
+        rowsList.add(rowEight);
     }
 
     public void testXX() {
         exchangeVolume = new VolumeByField<>();
-        for(Row row : rowsList) {
-            if(!exchangeVolume.getEntries().containsKey(row.getExchange())) {
+        for (Row row : rowsList) {
+            if (!exchangeVolume.getEntries().containsKey(row.getExchange())) {
                 marketVolume = new VolumeByField<>();
             } else {
                 marketVolume = exchangeVolume.getEntries().get(row.getExchange());
@@ -76,7 +103,7 @@ public class Test {
 
             exchangeVolume.getEntries().put(row.getExchange(), marketVolume);
 
-            if(!marketVolume.getEntries().containsKey(row.getMarket())) {
+            if (!marketVolume.getEntries().containsKey(row.getMarket())) {
                 contractTypeVolume = new VolumeByField<>();
             } else {
                 contractTypeVolume = marketVolume.getEntries().get(row.getMarket());
@@ -84,7 +111,7 @@ public class Test {
 
             marketVolume.getEntries().put(row.getMarket(), contractTypeVolume);
 
-            if(!contractTypeVolume.getEntries().containsKey(row.getContractType())) {
+            if (!contractTypeVolume.getEntries().containsKey(row.getContractType())) {
                 executionTypeVolume = new VolumeByField<>();
             } else {
                 executionTypeVolume = contractTypeVolume.getEntries().get(row.getExecutionType());
@@ -93,7 +120,7 @@ public class Test {
             contractTypeVolume.getEntries().put(row.getContractType(), executionTypeVolume);
 
             int volume;
-            if(!executionTypeVolume.getEntries().containsKey(row.getExecutionType())) {
+            if (!executionTypeVolume.getEntries().containsKey(row.getExecutionType())) {
                 volume = row.getVolume();
             } else {
                 volume = executionTypeVolume.getEntries().get(row.getExecutionType());
