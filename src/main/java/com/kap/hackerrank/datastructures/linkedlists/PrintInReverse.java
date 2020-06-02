@@ -41,7 +41,8 @@ public class PrintInReverse {
 
             Stack<Integer> linkedListData = new Stack();
             linkedListData.push(node.data);
-            while (node.next != null) {
+            node = node.next;
+            while (node != null) {
                 linkedListData.push(node.data);
                 node = node.next;
             }
