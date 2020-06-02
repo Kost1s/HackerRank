@@ -1,7 +1,5 @@
 package com.kap.hackerrank.datastructures.linkedlists;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
 
