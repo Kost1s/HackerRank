@@ -47,10 +47,8 @@ public class PrintInReverse {
                 node = node.next;
             }
 
-            for (int i = 0; i <= linkedListData.size(); i++) {
-                if (!linkedListData.isEmpty()) {
-                    System.out.println(linkedListData.pop());
-                }
+            while (!linkedListData.isEmpty()) {
+                System.out.println(linkedListData.pop());
             }
         }
     }
