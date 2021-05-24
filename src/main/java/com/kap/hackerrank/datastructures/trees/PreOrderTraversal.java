@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * @author Konstantinos Antoniou
  */
-public class PreorderTraversal {
+public class PreOrderTraversal {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);

@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * @author Konstantinos Antoniou
  */
-public class InorderTraversal {
+public class InOrderTraversal {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
